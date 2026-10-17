@@ -2,3 +2,5 @@ shot-*.png
 node_modules/
 .sync-secrets
 *.secret
+.supabase-*
+*.env

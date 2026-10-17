@@ -300,27 +300,29 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
   }
   function putState(s, st) { if (!st.started) st.started = Date.now(); save(stateKey(s.id), st); queueSync(today(), s.id); }
 
-  // ---------- Google Sheet sync ----------
-  // Apps Script web-app URL. Keep EMPTY: this repo is public. The real URL + key live only in this phone's
-  // localStorage, set in Program > Google Sheet sync or by a one-tap setup link: …/workout/#sync=<url>&key=<key>
+  // ---------- live sync (Supabase RPC sync_workout) ----------
+  // Supabase project URL. Keep EMPTY: this repo is public. The project URL, anon key and sync key live only in this
+  // phone's localStorage, set in Program > Live sync or by a one-tap setup link: …/workout/#sync=<url>&anon=<anon>&key=<key>
   var SYNC_URL = '';
   var SK = { cfg: 'workout.v1.sync', q: 'workout.v1.syncq', st: 'workout.v1.synced' };
-  var syncCfg = load(SK.cfg, {}), syncTimer = null, syncing = false, syncState = load(SK.st, { t: 0, err: false });
+  var syncCfg = load(SK.cfg, {}), syncTimer = null, syncing = false, dirty = {}, syncState = load(SK.st, { t: 0, err: false });
   function syncKey() { return String(syncCfg.key || '').trim(); }
-  function syncUrl() { return syncKey() ? String(syncCfg.url || SYNC_URL || '').trim() : ''; }
+  function syncAnon() { return String(syncCfg.anon || '').trim(); }
+  function syncUrl() { return syncKey() && syncAnon() ? String(syncCfg.url || SYNC_URL || '').trim().replace(/\/+$/, '') : ''; }
   function parseSetup(text) {
     var t = String(text || '').trim(), i = t.indexOf('#');
     if (i >= 0 && /(^|[#&])sync=/.test(t.slice(i))) {
       var p = {}; t.slice(i + 1).split('&').forEach(function (kv) { var j = kv.indexOf('='); if (j > 0) { try { p[kv.slice(0, j)] = decodeURIComponent(kv.slice(j + 1)); } catch (e) {} } });
-      return { url: String(p.sync || '').trim(), key: String(p.key || '').trim() };
+      return { url: String(p.sync || '').trim().replace(/\/+$/, ''), anon: String(p.anon || '').trim(), key: String(p.key || '').trim() };
     }
-    return { url: t, key: '' };
+    return { url: t.replace(/\/+$/, ''), anon: '', key: '' };
   }
+  function looksSupabase(u) { return /^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(u); }
   function hm(ms) { var d = new Date(ms); return pad(d.getHours()) + ':' + pad(d.getMinutes()); }
   function stamp(ms) { if (!ms) return ''; var d = new Date(ms); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()) + ' ' + hm(ms); }
   function queueSync(date, sid) {
     if (!syncUrl()) return;
-    var k = date + '|' + sid, q = load(SK.q, []); if (q.indexOf(k) < 0) q.push(k); save(SK.q, q);
+    var k = date + '|' + sid, q = load(SK.q, []); dirty[k] = true; if (q.indexOf(k) < 0) q.push(k); save(SK.q, q);
     clearTimeout(syncTimer); syncTimer = setTimeout(flushSync, 1500); renderSync();
   }
   function snapshot(k) {
@@ -333,28 +335,45 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
         sets.push({ exercise: ex.name, set: j + 1, kg: String(x.w || ''), reps: String(x.r || ''), done: !!x.d, time: x.t ? hm(x.t) : '' });
       });
     });
-    return { date: date, sessionId: s.id, sessionName: s.name, started: stamp(st.started), updated: stamp(st.u || last || Date.now()), note: String(st.note || ''), sets: sets };
+    return { app: 'workout', v: 2, date: date, sessionId: s.id, sessionName: s.name, startedAt: st.started ? new Date(st.started).toISOString() : '', started: stamp(st.started), updated: stamp(st.u || last || Date.now()), note: String(st.note || ''), sets: sets };
   }
   function flushSync() {
     var url = syncUrl(), q = load(SK.q, []);
     if (!url || !q.length || syncing || !plan) { renderSync(); return; }
     if (navigator.onLine === false || typeof fetch !== 'function') { syncState.err = true; renderSync(); return; }
-    var snaps = q.map(snapshot).filter(Boolean);
-    if (!snaps.length) { save(SK.q, []); renderSync(); return; }
+    var keys = q.filter(function (k) { return !!snapshot(k); });
+    if (!keys.length) { save(SK.q, []); renderSync(); return; }
     syncing = true; renderSync();
-    var payload = snaps.length === 1 ? Object.assign({ app: 'workout', v: 1, key: syncKey() }, snaps[0]) : { app: 'workout', v: 1, key: syncKey(), sessions: snaps };
-    // text/plain + no-cors = a "simple" request (no preflight); the response is opaque.
-    fetch(url, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+    var sent = [];
+    // one session per request, oldest first; stop at the first network/auth failure (the rest stay queued)
+    keys.reduce(function (p, k) {
+      return p.then(function () {
+        delete dirty[k];
+        var snap = snapshot(k);
+        if (!snap) { sent.push(k); return; }
+        return rpc('sync_workout', { p_key: syncKey(), p_date: snap.date, p_session: snap.sessionId, p_snapshot: snap }).then(function () { sent.push(k); }, function (e) {
+          if (e.status === 400 || e.status === 413) { sent.push(k); return; } // malformed: drop it rather than block the queue
+          throw e;
+        });
+      });
+    }, Promise.resolve())
+      .then(function () { syncState = { t: Date.now(), err: false }; }, function (e) { syncState = { t: syncState.t || 0, err: true, auth: e.status === 401 || e.status === 403 }; })
       .then(function () {
-        save(SK.q, load(SK.q, []).filter(function (k) { return q.indexOf(k) < 0; })); // keep sessions changed mid-flight
-        syncState = { t: Date.now(), err: false }; save(SK.st, syncState);
-      }, function () { syncState.err = true; save(SK.st, syncState); })
-      .then(function () { syncing = false; renderSync(); if (load(SK.q, []).length && !syncState.err) { clearTimeout(syncTimer); syncTimer = setTimeout(flushSync, 1500); } });
+        save(SK.q, load(SK.q, []).filter(function (k) { return (sent.indexOf(k) < 0 && keys.indexOf(k) >= 0) || dirty[k]; })); // keep sessions changed mid-flight
+        save(SK.st, syncState); syncing = false; renderSync();
+        if (load(SK.q, []).length && !syncState.err) { clearTimeout(syncTimer); syncTimer = setTimeout(flushSync, 1500); }
+      });
+  }
+  // POST {url}/rest/v1/rpc/<fn>. The anon key only lets the phone call the two sync functions; the sync key is checked server-side.
+  function rpc(fn, body) {
+    var a = syncAnon();
+    return fetch(syncUrl() + '/rest/v1/rpc/' + fn, { method: 'POST', mode: 'cors', cache: 'no-store', headers: { 'Content-Type': 'application/json', apikey: a, Authorization: 'Bearer ' + a }, body: JSON.stringify(body) })
+      .then(function (r) { if (r && r.ok) return r; var e = new Error('HTTP ' + (r && r.status)); e.status = r && r.status; throw e; });
   }
   function retrySync() { if (load(SK.q, []).length) { syncState.err = false; flushSync(); } }
   function syncText() {
-    if (!syncUrl()) return syncCfg.url ? 'Sync needs the key' : '';
-    if (syncState.err) return 'Offline, will retry';
+    if (!syncUrl()) return syncCfg.url ? 'Sync needs the setup link' : '';
+    if (syncState.err) return syncState.auth ? 'Sync key rejected' : 'Offline, will retry';
     if (syncing || load(SK.q, []).length) return 'Syncing…';
     return syncState.t ? 'Synced ' + hm(syncState.t) : 'Sync on';
   }
@@ -362,19 +381,19 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
     var t = syncText(), el = $('syncStatus'); if (el) { el.textContent = t; el.classList.toggle('err', !!syncState.err && !!syncUrl()); }
     var s2 = $('syncStatus2'); if (s2) s2.textContent = t || 'Sync is off.';
   }
-  function saveSyncCfg(url, key) {
-    syncCfg = url ? { url: url, key: key } : {}; save(SK.cfg, syncCfg); syncState = { t: 0, err: false }; save(SK.st, syncState);
+  function saveSyncCfg(url, anon, key) {
+    syncCfg = url ? { url: url, anon: anon, key: key } : {}; save(SK.cfg, syncCfg); syncState = { t: 0, err: false }; save(SK.st, syncState);
     if (url && plan) { var s = sessionById(pickedId()); if (s && load(stateKey(s.id), null)) queueSync(today(), s.id); }
     renderSync();
   }
-  // one-tap setup link: #sync=<url>&key=<key>. The hash never reaches the server; clear it right away.
+  // one-tap setup link: #sync=<url>&anon=<anon>&key=<key>. The hash never reaches the server; clear it right away.
   (function () {
     if (!/(^#|&)sync=/.test(location.hash || '')) return;
     var ps = parseSetup(location.href);
     try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {}
-    if (!/^https:\/\//.test(ps.url) || !ps.key) { setTimeout(function () { toast('Setup link incomplete'); }, 300); return; }
-    syncCfg = { url: ps.url, key: ps.key }; save(SK.cfg, syncCfg); syncState = { t: 0, err: false }; save(SK.st, syncState);
-    setTimeout(function () { toast('Google Sheet sync is set up'); }, 300);
+    if (!/^https:\/\//.test(ps.url) || !ps.key || !ps.anon) { setTimeout(function () { toast('Setup link incomplete'); }, 300); return; }
+    syncCfg = { url: ps.url, anon: ps.anon, key: ps.key }; save(SK.cfg, syncCfg); syncState = { t: 0, err: false }; save(SK.st, syncState);
+    setTimeout(function () { toast('Live sync is set up'); }, 300);
   })();
   window.addEventListener('online', retrySync);
   // migrate old single-box values like '65×6' / '65x' / '65' into separate kg + reps
@@ -446,11 +465,12 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
       h += '<button class="open" data-open="' + esc(s.id) + '">Open in Today</button></div>';
     });
     if (plan.notes && plan.notes.length) h += '<div class="sec"><h3>Rules</h3><ol class="rules">' + plan.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ol></div>';
-    h += '<div class="sec syncsec"><h3>Google Sheet sync</h3>' +
-      '<input class="inp" id="syncUrl" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Setup link or …/exec URL" value="' + esc(syncCfg.url || '') + '">' +
+    h += '<div class="sec syncsec"><h3>Live sync</h3>' +
+      '<input class="inp" id="syncUrl" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Setup link or Supabase project URL" value="' + esc(syncCfg.url || '') + '">' +
+      '<input class="inp" id="syncAnon" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Anon key (public)" value="' + esc(syncCfg.anon || '') + '">' +
       '<input class="inp" id="syncKey" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Sync key" value="' + esc(syncCfg.key || '') + '">' +
       '<div class="btns"><button class="btn" id="saveSync">Save</button><button class="btn ghost" id="syncNow">Sync now</button></div>' +
-      '<div class="hint"><span id="syncStatus2"></span> Paste the setup link from your coach into the first box (it fills both). Every tick or edit sends today’s session to the sheet about 1.5 s later, so your coach can follow live. Clear the URL to turn sync off. Stored only on this phone.</div></div>';
+      '<div class="hint"><span id="syncStatus2"></span> Paste the setup link from your coach into the first box and tap Save (it fills all three). Every tick or edit sends today’s session to your coach’s private database about 1.5 s later, so your coach can follow live. Clear the first box to turn sync off. Stored only on this phone.</div></div>';
     if (plan.updated) h += '<div class="hint">Plan updated ' + esc(new Date(plan.updated).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })) + '</div>';
     $('v-prog').innerHTML = h; renderSync();
   }
@@ -512,10 +532,10 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
   });
   $('v-prog').addEventListener('click', function (e) {
     if (e.target.closest('#saveSync')) {
-      var ps = parseSetup($('syncUrl').value), url = ps.url, key = ps.key || $('syncKey').value.trim();
-      if (url && !/^https:\/\/script\.google(usercontent)?\.com\//.test(url) && !confirm('That doesn’t look like an Apps Script URL. Save anyway?')) return;
-      if (url && !key) { toast('Add the sync key too'); return; }
-      $('syncUrl').value = url; $('syncKey').value = url ? key : ''; saveSyncCfg(url, key); toast(url ? 'Sync saved' : 'Sync off'); return;
+      var ps = parseSetup($('syncUrl').value), url = ps.url, anon = ps.anon || $('syncAnon').value.trim(), key = ps.key || $('syncKey').value.trim();
+      if (url && !looksSupabase(url) && !confirm('That doesn’t look like a Supabase project URL. Save anyway?')) return;
+      if (url && (!key || !anon)) { toast('Paste the full setup link (or add both keys)'); return; }
+      $('syncUrl').value = url; $('syncAnon').value = url ? anon : ''; $('syncKey').value = url ? key : ''; saveSyncCfg(url, anon, key); toast(url ? 'Sync saved' : 'Sync off'); return;
     }
     if (e.target.closest('#syncNow')) {
       if (!syncUrl()) { toast('Set the sync link first'); return; }
