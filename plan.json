@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T15:05:00+02:00",
+  "updated": "2026-10-17T15:35:00+02:00",
   "wedding": "2026-11-26",
   "notes": [
     "End every working set 1–2 reps short of failure (unless the note says 'to failure').",
@@ -25,20 +25,20 @@
           "short": "Bench",
           "sets": 4,
           "reps": "4–6",
-          "target": "67.5 kg if 65×6 felt easy, else 65 kg",
+          "target": "65 kg: stay until 6 reps on all 4 sets, then 67.5 kg",
           "rest": "2–3 min",
           "notes": "Shoulder blades pinched, feet planted. Stop 1–2 reps short of failure.",
-          "lastTime": "65 kg × 6 (set 1, today)"
+          "lastTime": "65 kg × 6, 6, 5, 4"
         },
         {
           "name": "Weighted pull-ups",
           "short": "Pull-ups",
           "sets": 4,
           "reps": "5–6",
-          "target": "Dip belt or a dumbbell between the feet; if neither, bodyweight with a 3s lowering",
+          "target": "Bodyweight × 6 on all 3 sets, then add weight (dip belt or a dumbbell between the feet)",
           "rest": "2–3 min",
           "notes": "Full hang at the bottom, chest to the bar.",
-          "lastTime": ""
+          "lastTime": "Bodyweight × 6, 6, 4"
         },
         {
           "name": "Seated DB shoulder press",
@@ -338,11 +338,21 @@
           "exercise": "Bench press",
           "sets": [
             "65×6",
-            "65×6"
+            "65×6",
+            "65×5",
+            "65×4"
+          ]
+        },
+        {
+          "exercise": "Weighted pull-ups",
+          "sets": [
+            "BW×6",
+            "BW×6",
+            "BW×4"
           ]
         }
       ],
-      "coachNote": "Session in progress. Set 1 of bench: 65 kg × 6. If it felt easy, go 67.5 kg for the next sets."
+      "coachNote": "Session in progress. Bench 65 × 6, 6, 5, 4: stay at 65 kg until all 4 sets hit 6. Pull-ups BW × 6, 6, 4: get 3×6 at bodyweight, then add weight."
     }
   ],
   "weekly": {
