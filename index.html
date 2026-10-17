@@ -61,7 +61,8 @@ ul.wu li:first-child:before{top:11px}
 .chk.on span:after{content:"";width:10px;height:5px;border-left:2px solid #161514;border-bottom:2px solid #161514;transform:rotate(-45deg) translate(1px,-1px)}
 .slbl{font-size:14px;color:var(--muted);width:44px;flex:0 0 44px}
 .set.done .slbl{color:var(--text2)}
-.set input{flex:1;min-width:0;height:44px;background:var(--field);border:.5px solid var(--line2);border-radius:var(--r);padding:0 12px;font-size:16px;outline:none;color:var(--text)}
+.set .x{color:var(--faint);font-size:14px}
+.set input{flex:1;min-width:0;text-align:center;height:44px;background:var(--field);border:.5px solid var(--line2);border-radius:var(--r);padding:0 12px;font-size:16px;outline:none;color:var(--text)}
 .set input:focus,textarea:focus{border-color:var(--accent)}
 input::placeholder,textarea::placeholder{color:var(--faint)}
 textarea{display:block;width:100%;min-height:76px;resize:none;background:var(--field);border:.5px solid var(--line2);border-radius:var(--r);padding:12px 14px;font-size:16px;outline:none;color:var(--text)}
@@ -153,10 +154,21 @@ ol.rules li{padding:5px 0}
         });
       });
     }
-    s.exercises.forEach(function (ex, i) { var a = st.ex[i] || []; for (var j = 0; j < (ex.sets || 0); j++) a[j] = a[j] || { d: false, v: '' }; st.ex[i] = a; });
+    s.exercises.forEach(function (ex, i) { var a = st.ex[i] || []; for (var j = 0; j < (ex.sets || 0); j++) a[j] = mig(a[j] || { d: false }); st.ex[i] = a; });
     return st;
   }
   function putState(s, st) { save(stateKey(s.id), st); }
+  // migrate old single-box values like '65×6' / '65x' / '65' into separate kg + reps
+  function mig(x) {
+    if (x.w === undefined && x.r === undefined) {
+      var m = /^\s*(\+?[\d.,]+)?\s*(?:kg)?\s*[×xX*]?\s*(\d+)?\s*$/.exec(String(x.v || ''));
+      x.w = m && m[1] ? m[1].replace(',', '.') : ''; x.r = m && m[2] ? m[2] : '';
+    }
+    delete x.v; return x;
+  }
+  function targetKg(ex) { var m = /(\d+(?:\.\d+)?)\s*kg/i.exec(ex.target || ''); return m ? m[1] : ''; }
+  function defaultKg(st, ex, i, j) { for (var k = j - 1; k >= 0; k--) { if (st.ex[i][k].w) return st.ex[i][k].w; } return targetKg(ex); }
+  function fmtSet(x) { var w = String(x.w || '').trim(), r = String(x.r || '').trim(); if (r) return (w || 'BW') + '×' + r; if (w) return w + (x.d ? '×?' : ''); return x.d ? '✓' : ''; }
   function normVal(v) { return String(v || '').trim().replace(/\s*[xX*]\s*/g, '×').replace(/\s*×\s*/g, '×'); }
 
   function renderToday() {
@@ -179,18 +191,19 @@ ol.rules li{padding:5px 0}
       h += '</dl>' + (ex.notes ? '<div class="note">' + esc(ex.notes) + '</div>' : '') + '<div class="sets">';
       st.ex[i].forEach(function (x, j) {
         h += '<div class="set' + (x.d ? ' done' : '') + '"><button class="chk' + (x.d ? ' on' : '') + '" data-ck="' + i + ':' + j + '" aria-label="Set ' + (j + 1) + ' done"><span></span></button><span class="slbl">Set ' + (j + 1) + '</span>' +
-          '<input type="text" inputmode="decimal" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="kg × reps" data-in="' + i + ':' + j + '" value="' + esc(x.v) + '"></div>';
+          '<input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="BW" aria-label="kg" data-kg="' + i + ':' + j + '" value="' + esc(x.w || defaultKg(st, ex, i, j)) + '"><span class="x">kg ×</span>' +
+          '<input type="text" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="reps" aria-label="reps" data-rp="' + i + ':' + j + '" value="' + esc(x.r || '') + '"></div>';
       });
       h += '</div></div>';
     });
     h += '<div class="sec"><h3>Note for your coach (optional)</h3><textarea id="snote" placeholder="e.g. bench felt easy, left shoulder fine">' + esc(st.note || '') + '</textarea>' +
-      '<div style="margin-top:12px"><button class="btn" id="copy">Copy summary</button><button class="btn ghost" id="reset">Clear today’s ticks</button></div><div class="hint">Type sets like 67.5x6 (x is fine). Ticks save on this phone for today. Paste the summary into chat.</div></div>';
+      '<div style="margin-top:12px"><button class="btn" id="copy">Copy summary</button><button class="btn ghost" id="reset">Clear today’s ticks</button></div><div class="hint">Weight carries over from the previous set, so usually just type reps; that ticks the set. Empty kg = bodyweight (BW). Ticks save on this phone for today. Paste the summary into chat.</div></div>';
     $('v-today').innerHTML = h;
   }
   function summary() {
     var s = sessionById(pickedId()), st = getState(s), parts = [];
     s.exercises.forEach(function (ex, i) {
-      var v = st.ex[i].filter(function (x) { return x.d || normVal(x.v); }).map(function (x) { return normVal(x.v) || '✓'; });
+      var v = st.ex[i].map(fmtSet).filter(Boolean);
       if (v.length) parts.push((ex.short || ex.name) + ' ' + v.join(', '));
     });
     var txt = s.name + ', ' + nice(today()) + '\n' + (parts.length ? parts.join('; ') : 'No sets logged yet');
@@ -200,6 +213,11 @@ ol.rules li{padding:5px 0}
   function copyText(t) {
     function fallback() { var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length); var ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove(); toast(ok ? 'Summary copied' : 'Copy failed. Long-press to select instead.'); }
     if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(function () { toast('Summary copied, paste it into chat'); }, fallback); else fallback();
+  }
+  function updateProg(s, st) {
+    var total = 0, done = 0; s.exercises.forEach(function (ex, i) { st.ex[i].forEach(function (x) { total++; if (x.d) done++; }); });
+    var f = document.querySelector('#v-today .fill'); if (f) f.style.width = (total ? done / total * 100 : 0).toFixed(1) + '%';
+    var sp = document.querySelector('#v-today .prog span'); if (sp) sp.textContent = done + ' / ' + total + ' sets';
   }
   function renderProgram() {
     var h = '';
@@ -247,17 +265,25 @@ ol.rules li{padding:5px 0}
     var s = sessionById(pickedId());
     if (b.hasAttribute('data-ck')) {
       var ij = b.getAttribute('data-ck').split(':').map(Number), st = getState(s), x = st.ex[ij[0]][ij[1]];
-      var inp = document.querySelector('[data-in="' + ij[0] + ':' + ij[1] + '"]'); if (inp) x.v = normVal(inp.value);
+      var kg = document.querySelector('[data-kg="' + ij[0] + ':' + ij[1] + '"]'), rp = document.querySelector('[data-rp="' + ij[0] + ':' + ij[1] + '"]');
+      if (kg) x.w = kg.value.trim().replace(',', '.'); if (rp) x.r = rp.value.replace(/\D/g, '');
       x.d = !x.d; putState(s, st); var y = window.scrollY; renderToday(); window.scrollTo(0, y);
     } else if (b.hasAttribute('data-pick')) { save('workout.v1.pick.' + today(), b.getAttribute('data-pick')); renderToday(); }
     else if (b.id === 'copy') copyText(summary());
-    else if (b.id === 'reset') { if (confirm('Clear all ticks and numbers for this session today?')) { var st2 = { ex: {}, note: '' }; s.exercises.forEach(function (ex, i) { st2.ex[i] = []; for (var j = 0; j < ex.sets; j++) st2.ex[i].push({ d: false, v: '' }); }); putState(s, st2); renderToday(); } }
+    else if (b.id === 'reset') { if (confirm('Clear all ticks and numbers for this session today?')) { var st2 = { ex: {}, note: '' }; s.exercises.forEach(function (ex, i) { st2.ex[i] = []; for (var j = 0; j < ex.sets; j++) st2.ex[i].push({ d: false, w: '', r: '' }); }); putState(s, st2); renderToday(); } }
   });
   $('v-today').addEventListener('change', function (e) {
     var t = e.target, s = sessionById(pickedId()), st = getState(s);
-    if (t.hasAttribute('data-in')) {
-      var ij = t.getAttribute('data-in').split(':').map(Number), x = st.ex[ij[0]][ij[1]];
-      x.v = normVal(t.value); if (x.v && !x.d) x.d = true; putState(s, st); var y = window.scrollY; renderToday(); window.scrollTo(0, y);
+    if (t.hasAttribute('data-kg') || t.hasAttribute('data-rp')) {
+      var key = t.getAttribute('data-kg') || t.getAttribute('data-rp'), ij = key.split(':').map(Number), x = st.ex[ij[0]][ij[1]];
+      var kg = document.querySelector('[data-kg="' + key + '"]'), rp = document.querySelector('[data-rp="' + key + '"]');
+      x.w = kg.value.trim().replace(',', '.'); x.r = rp.value.replace(/\D/g, ''); rp.value = x.r;
+      if (x.r && !x.d) x.d = true;
+      putState(s, st);
+      // reflect tick + carry the weight forward into later, still-empty sets
+      var row = t.closest('.set'); row.classList.toggle('done', x.d); row.querySelector('.chk').classList.toggle('on', x.d);
+      for (var k = ij[1] + 1; k < st.ex[ij[0]].length; k++) { if (st.ex[ij[0]][k].w) break; var nk = document.querySelector('[data-kg="' + ij[0] + ':' + k + '"]'); if (nk && x.w) nk.value = x.w; }
+      updateProg(s, st);
     } else if (t.id === 'snote') { st.note = t.value; putState(s, st); }
   });
   $('v-prog').addEventListener('click', function (e) { var b = e.target.closest('[data-open]'); if (!b) return; save('workout.v1.pick.' + today(), b.getAttribute('data-open')); document.querySelector('[data-v="today"]').click(); });
