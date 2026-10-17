@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Workout">
+<meta name="application-name" content="Workout">
+<meta name="theme-color" content="#161514">
+<meta name="format-detection" content="telephone=no">
+<title>Workout</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+:root{--bg:#161514;--raise:#1d1c1a;--field:#1f1e1c;--line:rgba(236,232,224,.09);--line2:rgba(236,232,224,.16);--text:#ebe8e2;--text2:#b5b1a9;--muted:#85827b;--faint:#5f5c57;--track:#2b2a27;--accent:#9aab9c;--r:12px;
+--sat:env(safe-area-inset-top);--sab:env(safe-area-inset-bottom);--sal:env(safe-area-inset-left);--sar:env(safe-area-inset-right);
+--font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 var(--font);-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;font-feature-settings:"tnum" 1;padding:var(--sat) var(--sar) 0 var(--sal);min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+button,input,textarea{font:inherit;color:inherit;touch-action:manipulation}
+button{cursor:pointer;border:0;background:none;padding:0}
+svg{display:block}
+.hdr{padding:14px 22px 4px;max-width:640px;width:100%;margin:0 auto}
+.topbar{display:flex;align-items:center;justify-content:space-between;height:32px}
+.appname{font-size:13px;font-weight:500;color:var(--muted)}
+.refresh{font-size:13px;color:var(--muted);height:44px;padding:0 2px}
+h1{margin:2px 0 0;font-size:32px;line-height:1.1;font-weight:700;letter-spacing:-.022em}
+.sub{color:var(--muted);font-size:15px;margin-top:4px}
+main{flex:1;padding:4px 22px 28px;max-width:640px;width:100%;margin:0 auto}
+.sec{padding:20px 0;border-top:.5px solid var(--line)}
+.view>.sec:first-child{border-top:0;padding-top:10px}
+h3{margin:0 0 10px;font-size:13px;font-weight:500;color:var(--muted)}
+.picker{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin-bottom:4px}
+.picker::-webkit-scrollbar{display:none}
+.pill{flex:0 0 auto;padding:0 15px;height:38px;border-radius:19px;color:var(--muted);font-size:14px;font-weight:500;border:.5px solid var(--line2)}
+.pill.on{color:var(--text);border-color:var(--text2);background:var(--raise)}
+.pill .dot{display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-left:6px;vertical-align:2px}
+.prog{display:flex;align-items:center;gap:12px;margin-top:14px;font-size:13px;color:var(--muted)}
+.track{flex:1;height:3px;background:var(--track);border-radius:2px;overflow:hidden}
+.fill{height:100%;background:var(--accent);border-radius:2px;transition:width .3s}
+ul.wu{margin:0;padding:0;list-style:none}
+ul.wu li{padding:10px 0 10px 18px;position:relative;color:var(--text2);font-size:15px;border-top:.5px solid var(--line)}
+ul.wu li:first-child{border-top:0;padding-top:2px}
+ul.wu li:before{content:"";position:absolute;left:2px;top:19px;width:5px;height:5px;border-radius:50%;border:1px solid var(--muted)}
+ul.wu li:first-child:before{top:11px}
+.ex h2{margin:0;font-size:20px;font-weight:600;letter-spacing:-.015em}
+.exhd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.sr{font-size:17px;color:var(--text);font-weight:500;white-space:nowrap}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:3px 14px;margin:10px 0 6px;font-size:14px}
+.meta dt{color:var(--muted)}.meta dd{margin:0;color:var(--text2)}
+.meta dd.tg{color:var(--text)}
+.note{font-size:13px;color:var(--muted);margin:6px 0 4px;line-height:1.5}
+.sets{margin-top:8px}
+.set{display:flex;align-items:center;gap:10px;min-height:56px;border-top:.5px solid var(--line)}
+.chk{width:44px;height:44px;flex:0 0 44px;display:flex;align-items:center;justify-content:center;border-radius:50%}
+.chk span{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--faint);display:flex;align-items:center;justify-content:center;transition:.15s}
+.chk.on span{background:var(--accent);border-color:var(--accent)}
+.chk.on span:after{content:"";width:10px;height:5px;border-left:2px solid #161514;border-bottom:2px solid #161514;transform:rotate(-45deg) translate(1px,-1px)}
+.slbl{font-size:14px;color:var(--muted);width:44px;flex:0 0 44px}
+.set.done .slbl{color:var(--text2)}
+.set input{flex:1;min-width:0;height:44px;background:var(--field);border:.5px solid var(--line2);border-radius:var(--r);padding:0 12px;font-size:16px;outline:none;color:var(--text)}
+.set input:focus,textarea:focus{border-color:var(--accent)}
+input::placeholder,textarea::placeholder{color:var(--faint)}
+textarea{display:block;width:100%;min-height:76px;resize:none;background:var(--field);border:.5px solid var(--line2);border-radius:var(--r);padding:12px 14px;font-size:16px;outline:none;color:var(--text)}
+.btn{height:50px;padding:0 18px;border-radius:var(--r);background:var(--text);color:var(--bg);font-weight:600;font-size:16px;width:100%}
+.btn:active{opacity:.85}
+.btn.ghost{background:transparent;color:var(--text2);border:.5px solid var(--line2);margin-top:10px}
+.hint{font-size:12px;color:var(--faint);margin-top:10px;line-height:1.5}
+.card-s h2{margin:0;font-size:19px;font-weight:600}
+.card-s .f{font-size:13px;color:var(--muted);margin:2px 0 10px}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:.5px solid var(--line);font-size:15px}
+.row span:first-child{color:var(--text2)}.row span:last-child{color:var(--muted);white-space:nowrap}
+.open{height:44px;color:var(--accent);font-size:15px;font-weight:500;margin-top:4px}
+ol.rules{margin:0;padding-left:18px;color:var(--text2);font-size:14px}
+ol.rules li{padding:5px 0}
+.week{display:flex;align-items:center;justify-content:space-between}
+.week .n{font-size:30px;font-weight:600;letter-spacing:-.02em}
+.week .n small{font-size:15px;color:var(--muted);font-weight:400}
+.dots{display:flex;gap:8px}
+.dots i{width:12px;height:12px;border-radius:50%;border:1px solid var(--faint)}
+.dots i.on{background:var(--accent);border-color:var(--accent)}
+.lg .d{font-size:13px;color:var(--muted)}
+.lg h2{margin:2px 0 8px;font-size:18px;font-weight:600}
+.lg .e{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-top:.5px solid var(--line);font-size:14px}
+.lg .e span:first-child{color:var(--text2)}.lg .e span:last-child{color:var(--text);text-align:right}
+.cn{margin-top:10px;font-size:14px;color:var(--text2);padding-left:12px;border-left:1.5px solid var(--accent)}
+.tag{display:inline-block;font-size:11px;padding:1px 7px;border-radius:9px;border:.5px solid var(--accent);color:var(--accent);margin-left:6px;font-weight:500;vertical-align:2px}
+.empty{color:var(--faint);font-size:14px;padding:8px 0}
+.tabs{position:sticky;bottom:0;z-index:30;display:flex;width:100%;background:rgba(22,21,20,.94);-webkit-backdrop-filter:saturate(1.4) blur(18px);backdrop-filter:saturate(1.4) blur(18px);border-top:.5px solid var(--line2);padding:0 var(--sar) var(--sab) var(--sal);margin-top:auto}
+.tabs button{flex:1;height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;color:var(--faint);gap:3px;font-weight:500}
+.tabs button.on{color:var(--text)}
+.view{display:none}.view.on{display:block}
+.toast{position:fixed;left:50%;bottom:calc(76px + var(--sab));transform:translateX(-50%) translateY(12px);background:var(--text);color:var(--bg);padding:10px 16px;border-radius:20px;font-size:14px;font-weight:500;opacity:0;transition:.25s;z-index:60;pointer-events:none;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.err{color:var(--text2);font-size:14px;padding:20px 0}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <div class="topbar"><span class="appname">Workout</span><button class="refresh" id="refresh">Refresh plan</button></div>
+  <h1 id="title">Today</h1>
+  <div class="sub" id="subtitle"></div>
+</header>
+<main>
+  <section class="view on" id="v-today"></section>
+  <section class="view" id="v-prog"></section>
+  <section class="view" id="v-hist"></section>
+</main>
+<nav class="tabs">
+  <button class="on" data-v="today"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 12h18M6 8v8M18 8v8M8.5 10v4M15.5 10v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Today</button>
+  <button data-v="prog"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 7h14M5 12h14M5 17h9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Program</button>
+  <button data-v="hist"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 19V11M10 19V6M15 19v-5M20 19V9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>History</button>
+</nav>
+<div class="toast" id="toast"></div>
+<script>
+(function () {
+  'use strict';
+  var plan = null, view = 'today';
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function today() { var d = new Date(); return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function pdate(k) { var a = String(k).slice(0, 10).split('-').map(Number); return new Date(a[0], a[1] - 1, a[2]); }
+  function nice(k, wd) { return pdate(k).toLocaleDateString('en-GB', wd === false ? { day: 'numeric', month: 'short' } : { weekday: 'short', day: 'numeric', month: 'short' }); }
+  function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
+  function save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  var tt; function toast(m) { var t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(function () { t.classList.remove('on'); }, 2000); }
+
+  function fetchPlan(manual) {
+    return fetch('plan.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(function (p) { plan = p; save('workout.v1.plan', p); render(); if (manual) toast('Plan updated'); })
+      .catch(function (e) { var c = load('workout.v1.plan', null); if (c) { plan = c; render(); toast('Offline: showing the saved plan'); } else $('v-today').innerHTML = '<div class="err">Couldn’t load plan.json (' + esc(e.message) + ').</div>'; });
+  }
+  function sessionById(id) { return (plan.sessions || []).filter(function (s) { return s.id === id; })[0]; }
+  function pickedId() { return load('workout.v1.pick.' + today(), null) || plan.nextSessionId || (plan.sessions[0] && plan.sessions[0].id); }
+  function stateKey(sid) { return 'workout.v1.' + today() + '.' + sid; }
+  function getState(s) {
+    var st = load(stateKey(s.id), null);
+    if (!st) {
+      st = { ex: {}, note: '' };
+      // prefill from today's log entry in plan.json, if any
+      (plan.log || []).forEach(function (lg) {
+        if (lg.date !== today() || lg.sessionId !== s.id) return;
+        (lg.entries || []).forEach(function (en) {
+          s.exercises.forEach(function (ex, i) {
+            if (ex.name.toLowerCase() === String(en.exercise).toLowerCase() || (ex.short || '').toLowerCase() === String(en.exercise).toLowerCase()) {
+              st.ex[i] = (en.sets || []).map(function (v) { return { d: true, v: v }; });
+            }
+          });
+        });
+      });
+    }
+    s.exercises.forEach(function (ex, i) { var a = st.ex[i] || []; for (var j = 0; j < (ex.sets || 0); j++) a[j] = a[j] || { d: false, v: '' }; st.ex[i] = a; });
+    return st;
+  }
+  function putState(s, st) { save(stateKey(s.id), st); }
+  function normVal(v) { return String(v || '').trim().replace(/\s*[xX*]\s*/g, '×').replace(/\s*×\s*/g, '×'); }
+
+  function renderToday() {
+    var s = sessionById(pickedId()); if (!s) { $('v-today').innerHTML = '<div class="err">No session found.</div>'; return; }
+    var st = getState(s), total = 0, done = 0;
+    s.exercises.forEach(function (ex, i) { st.ex[i].forEach(function (x) { total++; if (x.d) done++; }); });
+    $('title').textContent = s.name.replace(/^Day \d+\s*·\s*/, '');
+    $('subtitle').textContent = (s.name.match(/^Day \d+/) || [''])[0] + (s.id === plan.nextSessionId ? ' · next up' : '') + ' · ' + nice(today());
+    var h = '<div class="sec"><div class="picker">' + plan.sessions.map(function (x) {
+      return '<button class="pill' + (x.id === s.id ? ' on' : '') + '" data-pick="' + esc(x.id) + '">' + esc((x.name.match(/^Day \d+/) || [x.name])[0]) + (x.id === plan.nextSessionId ? '<span class="dot"></span>' : '') + '</button>';
+    }).join('') + '</div>';
+    h += '<div class="sub" style="margin-top:10px">' + esc(s.focus || '') + '</div>';
+    h += '<div class="prog"><div class="track"><div class="fill" style="width:' + (total ? done / total * 100 : 0).toFixed(1) + '%"></div></div><span>' + done + ' / ' + total + ' sets</span></div></div>';
+    if (s.warmup && s.warmup.length) h += '<div class="sec"><h3>Warm-up</h3><ul class="wu">' + s.warmup.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') + '</ul></div>';
+    s.exercises.forEach(function (ex, i) {
+      h += '<div class="sec ex"><div class="exhd"><h2>' + esc(ex.name) + '</h2><span class="sr">' + esc(ex.sets) + ' × ' + esc(ex.reps) + '</span></div><dl class="meta">';
+      if (ex.target) h += '<dt>Target</dt><dd class="tg">' + esc(ex.target) + '</dd>';
+      if (ex.rest) h += '<dt>Rest</dt><dd>' + esc(ex.rest) + '</dd>';
+      if (ex.lastTime) h += '<dt>Last time</dt><dd>' + esc(ex.lastTime) + '</dd>';
+      h += '</dl>' + (ex.notes ? '<div class="note">' + esc(ex.notes) + '</div>' : '') + '<div class="sets">';
+      st.ex[i].forEach(function (x, j) {
+        h += '<div class="set' + (x.d ? ' done' : '') + '"><button class="chk' + (x.d ? ' on' : '') + '" data-ck="' + i + ':' + j + '" aria-label="Set ' + (j + 1) + ' done"><span></span></button><span class="slbl">Set ' + (j + 1) + '</span>' +
+          '<input type="text" inputmode="decimal" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="kg × reps" data-in="' + i + ':' + j + '" value="' + esc(x.v) + '"></div>';
+      });
+      h += '</div></div>';
+    });
+    h += '<div class="sec"><h3>Note for your coach (optional)</h3><textarea id="snote" placeholder="e.g. bench felt easy, left shoulder fine">' + esc(st.note || '') + '</textarea>' +
+      '<div style="margin-top:12px"><button class="btn" id="copy">Copy summary</button><button class="btn ghost" id="reset">Clear today’s ticks</button></div><div class="hint">Type sets like 67.5x6 (x is fine). Ticks save on this phone for today. Paste the summary into chat.</div></div>';
+    $('v-today').innerHTML = h;
+  }
+  function summary() {
+    var s = sessionById(pickedId()), st = getState(s), parts = [];
+    s.exercises.forEach(function (ex, i) {
+      var v = st.ex[i].filter(function (x) { return x.d || normVal(x.v); }).map(function (x) { return normVal(x.v) || '✓'; });
+      if (v.length) parts.push((ex.short || ex.name) + ' ' + v.join(', '));
+    });
+    var txt = s.name + ', ' + nice(today()) + '\n' + (parts.length ? parts.join('; ') : 'No sets logged yet');
+    if (st.note && st.note.trim()) txt += '\nNote: ' + st.note.trim();
+    return txt;
+  }
+  function copyText(t) {
+    function fallback() { var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, t.length); var ok = false; try { ok = document.execCommand('copy'); } catch (e) {} ta.remove(); toast(ok ? 'Summary copied' : 'Copy failed. Long-press to select instead.'); }
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(t).then(function () { toast('Summary copied, paste it into chat'); }, fallback); else fallback();
+  }
+  function renderProgram() {
+    var h = '';
+    plan.sessions.forEach(function (s) {
+      h += '<div class="sec card-s"><h2>' + esc(s.name) + (s.id === plan.nextSessionId ? '<span class="tag">next</span>' : '') + '</h2><div class="f">' + esc(s.focus || '') + '</div>';
+      s.exercises.forEach(function (ex) { h += '<div class="row"><span>' + esc(ex.name) + '</span><span>' + esc(ex.sets) + ' × ' + esc(ex.reps) + '</span></div>'; });
+      h += '<button class="open" data-open="' + esc(s.id) + '">Open in Today</button></div>';
+    });
+    if (plan.notes && plan.notes.length) h += '<div class="sec"><h3>Rules</h3><ol class="rules">' + plan.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ol></div>';
+    if (plan.updated) h += '<div class="hint">Plan updated ' + esc(new Date(plan.updated).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })) + '</div>';
+    $('v-prog').innerHTML = h;
+  }
+  function renderHistory() {
+    var w = plan.weekly || { goal: 4, done: 0 }, h = '<div class="sec"><h3>This week' + (w.weekOf ? ' · from ' + esc(nice(w.weekOf, false)) : '') + '</h3><div class="week"><div class="n">' + esc(w.done) + ' <small>of ' + esc(w.goal) + ' sessions</small></div><div class="dots">';
+    for (var i = 0; i < (w.goal || 4); i++) h += '<i class="' + (i < w.done ? 'on' : '') + '"></i>';
+    h += '</div></div>';
+    if (plan.wedding) { var days = Math.ceil((pdate(plan.wedding) - pdate(today())) / 864e5); if (days >= 0) h += '<div class="hint">' + days + ' days to the wedding</div>'; }
+    h += '</div>';
+    var log = (plan.log || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; });
+    if (!log.length) h += '<div class="sec empty">No sessions logged yet.</div>';
+    log.forEach(function (lg) {
+      var s = sessionById(lg.sessionId);
+      h += '<div class="sec lg"><div class="d">' + esc(nice(lg.date)) + '</div><h2>' + esc(s ? s.name : lg.sessionId) + (lg.inProgress ? '<span class="tag">in progress</span>' : '') + '</h2>';
+      (lg.entries || []).forEach(function (en) { h += '<div class="e"><span>' + esc(en.exercise) + '</span><span>' + esc((en.sets || []).join(', ')) + '</span></div>'; });
+      if (lg.coachNote) h += '<div class="cn">' + esc(lg.coachNote) + '</div>';
+      h += '</div>';
+    });
+    $('v-hist').innerHTML = h;
+  }
+  function render() {
+    if (!plan) return;
+    if (view === 'today') renderToday();
+    else { $('title').textContent = view === 'prog' ? 'Program' : 'History'; $('subtitle').textContent = view === 'prog' ? '4-day upper / lower split' : 'Sessions and coach notes'; if (view === 'prog') renderProgram(); else renderHistory(); }
+  }
+  // events
+  document.querySelector('.tabs').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-v]'); if (!b) return; view = b.getAttribute('data-v');
+    Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.classList.toggle('on', x === b); });
+    Array.prototype.forEach.call(document.querySelectorAll('.view'), function (v) { v.classList.toggle('on', v.id === 'v-' + view); });
+    render(); window.scrollTo(0, 0);
+  });
+  $('refresh').addEventListener('click', function () { fetchPlan(true); });
+  $('v-today').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var s = sessionById(pickedId());
+    if (b.hasAttribute('data-ck')) {
+      var ij = b.getAttribute('data-ck').split(':').map(Number), st = getState(s), x = st.ex[ij[0]][ij[1]];
+      var inp = document.querySelector('[data-in="' + ij[0] + ':' + ij[1] + '"]'); if (inp) x.v = normVal(inp.value);
+      x.d = !x.d; putState(s, st); var y = window.scrollY; renderToday(); window.scrollTo(0, y);
+    } else if (b.hasAttribute('data-pick')) { save('workout.v1.pick.' + today(), b.getAttribute('data-pick')); renderToday(); }
+    else if (b.id === 'copy') copyText(summary());
+    else if (b.id === 'reset') { if (confirm('Clear all ticks and numbers for this session today?')) { var st2 = { ex: {}, note: '' }; s.exercises.forEach(function (ex, i) { st2.ex[i] = []; for (var j = 0; j < ex.sets; j++) st2.ex[i].push({ d: false, v: '' }); }); putState(s, st2); renderToday(); } }
+  });
+  $('v-today').addEventListener('change', function (e) {
+    var t = e.target, s = sessionById(pickedId()), st = getState(s);
+    if (t.hasAttribute('data-in')) {
+      var ij = t.getAttribute('data-in').split(':').map(Number), x = st.ex[ij[0]][ij[1]];
+      x.v = normVal(t.value); if (x.v && !x.d) x.d = true; putState(s, st); var y = window.scrollY; renderToday(); window.scrollTo(0, y);
+    } else if (t.id === 'snote') { st.note = t.value; putState(s, st); }
+  });
+  $('v-prog').addEventListener('click', function (e) { var b = e.target.closest('[data-open]'); if (!b) return; save('workout.v1.pick.' + today(), b.getAttribute('data-open')); document.querySelector('[data-v="today"]').click(); });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) fetchPlan(false); });
+  window.__w = { summary: function () { return summary(); } };
+  fetchPlan(false);
+})();
+</script>
+</body>
+</html>

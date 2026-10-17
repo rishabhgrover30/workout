@@ -1,0 +1,98 @@
+{
+  "updated": "2026-10-17T15:05:00+02:00",
+  "wedding": "2026-11-26",
+  "notes": [
+    "End every working set 1–2 reps short of failure (unless the note says 'to failure').",
+    "Double progression: hit the top of the rep range on every set, then add weight next time.",
+    "Only managed 3 days this week? Carry the 4th day into next week, so nothing gets skipped.",
+    "Deload the week of 16 Nov: about 40% lighter, same exercises, to peak fresh for the wedding on 26 Nov.",
+    "Travel: Spain (IDIADA) 26–31 Oct. Morning sessions, 45 minutes: main lifts and shoulders first."
+  ],
+  "nextSessionId": "day1",
+  "sessions": [
+    {
+      "id": "day1",
+      "name": "Day 1 · Upper Strength",
+      "focus": "Heavy press and pull, shoulder width, neck and posture",
+      "warmup": [
+        "Chin tucks lying on your back, 2×10 with a 5s hold each",
+        "Light pec-deck reverse flyes, 2×15",
+        "2 warm-up bench sets: empty bar ×10, then about 60% ×5"
+      ],
+      "exercises": [
+        { "name": "Bench press", "short": "Bench", "sets": 4, "reps": "4–6", "target": "67.5 kg if 65×6 felt easy, else 65 kg", "rest": "2–3 min", "notes": "Shoulder blades pinched, feet planted. Stop 1–2 reps short of failure.", "lastTime": "65 kg × 6 (set 1, today)" },
+        { "name": "Weighted pull-ups", "short": "Pull-ups", "sets": 4, "reps": "5–6", "target": "Dip belt or a dumbbell between the feet; if neither, bodyweight with a 3s lowering", "rest": "2–3 min", "notes": "Full hang at the bottom, chest to the bar.", "lastTime": "" },
+        { "name": "Seated DB shoulder press", "short": "DB press", "sets": 3, "reps": "6–8", "target": "", "rest": "2 min", "notes": "Back supported, don't flare the ribs.", "lastTime": "" },
+        { "name": "Barbell row", "short": "Row", "sets": 3, "reps": "6–8", "target": "", "rest": "2 min", "notes": "Torso about 45°, pull to the lower ribs.", "lastTime": "" },
+        { "name": "Cable lateral raise", "short": "Cable laterals", "sets": 4, "reps": "12–15", "target": "One arm at a time", "rest": "60–90 s", "notes": "Last set to failure. Lead with the elbow, don't swing. This builds the capped shoulders.", "lastTime": "" },
+        { "name": "Face pulls", "short": "Face pulls", "sets": 3, "reps": "15", "target": "", "rest": "60 s", "notes": "Rope to the eyes, 1s hold at the back. Good for posture.", "lastTime": "" },
+        { "name": "Curls + triceps pushdowns (superset)", "short": "Curls/pushdowns", "sets": 2, "reps": "10–12 each", "target": "", "rest": "60 s", "notes": "Go straight from one to the other, then rest.", "lastTime": "" }
+      ]
+    },
+    {
+      "id": "day2",
+      "name": "Day 2 · Lower Strength",
+      "focus": "Heavy squat and hinge",
+      "warmup": [
+        "5 min bike or incline walk",
+        "Bodyweight squats ×10, leg swings ×10 each side",
+        "Ramp-up squat sets: bar ×8, 50% ×5, 70% ×3"
+      ],
+      "exercises": [
+        { "name": "Back squat", "short": "Squat", "sets": 4, "reps": "4–6", "target": "", "rest": "3 min", "notes": "Brace hard, hit depth, stop 1–2 reps short of failure.", "lastTime": "" },
+        { "name": "Romanian deadlift", "short": "RDL", "sets": 3, "reps": "6–8", "target": "", "rest": "2 min", "notes": "Hips back, bar close to the legs, feel the hamstring stretch.", "lastTime": "" },
+        { "name": "Walking lunges", "short": "Lunges", "sets": 3, "reps": "10 each leg", "target": "", "rest": "90 s", "notes": "Dumbbells at your sides.", "lastTime": "" },
+        { "name": "Calf raises", "short": "Calves", "sets": 3, "reps": "12", "target": "", "rest": "60 s", "notes": "2s pause at the bottom.", "lastTime": "" },
+        { "name": "Hanging leg raises", "short": "Leg raises", "sets": 3, "reps": "12", "target": "", "rest": "60 s", "notes": "No swinging, curl the pelvis up.", "lastTime": "" }
+      ]
+    },
+    {
+      "id": "day3",
+      "name": "Day 3 · Upper Size",
+      "focus": "Shoulders, V-taper and neck strength",
+      "warmup": [
+        "Chin tucks, 2×10 with a 5s hold",
+        "Neck isometrics: hand against the forehead, the back of the head and each side, 50% effort, 2×10s each"
+      ],
+      "exercises": [
+        { "name": "Incline DB press", "short": "Incline DB", "sets": 4, "reps": "8–10", "target": "", "rest": "2 min", "notes": "", "lastTime": "" },
+        { "name": "Wide-grip pull-ups or lat pulldown", "short": "Wide pull-ups", "sets": 4, "reps": "10", "target": "", "rest": "90 s", "notes": "Think elbows to the hips, which builds width.", "lastTime": "" },
+        { "name": "Single-arm cable pulldown", "short": "1-arm pulldown", "sets": 3, "reps": "12", "target": "", "rest": "60 s", "notes": "Each arm.", "lastTime": "" },
+        { "name": "Seated cable row", "short": "Cable row", "sets": 3, "reps": "10–12", "target": "", "rest": "90 s", "notes": "", "lastTime": "" },
+        { "name": "Cable Y-raise", "short": "Y-raise", "sets": 3, "reps": "15", "target": "", "rest": "60 s", "notes": "Light, smooth, thumbs up.", "lastTime": "" },
+        { "name": "Lateral raises", "short": "Laterals", "sets": 4, "reps": "15", "target": "", "rest": "60 s", "notes": "Dumbbells, slight lean forward.", "lastTime": "" },
+        { "name": "Rear-delt flyes", "short": "Rear delts", "sets": 3, "reps": "15", "target": "", "rest": "60 s", "notes": "Pec-deck reverse or bent-over dumbbells.", "lastTime": "" },
+        { "name": "Prone Y-raises", "short": "Prone Y", "sets": 2, "reps": "12", "target": "Very light or bodyweight", "rest": "60 s", "notes": "Face down on an incline bench, chin tucked. For posture.", "lastTime": "" },
+        { "name": "Curls + triceps", "short": "Curls/triceps", "sets": 3, "reps": "12 each", "target": "", "rest": "60 s", "notes": "Superset.", "lastTime": "" }
+      ]
+    },
+    {
+      "id": "day4",
+      "name": "Day 4 · Lower Size",
+      "focus": "Hinge strength, leg volume and lats",
+      "warmup": [
+        "5 min bike",
+        "Hip hinges and glute bridges ×10",
+        "Ramp-up deadlift sets: 40% ×5, 60% ×3, 80% ×1"
+      ],
+      "exercises": [
+        { "name": "Deadlift", "short": "Deadlift", "sets": 3, "reps": "3–5", "target": "", "rest": "3 min", "notes": "Reset each rep, neutral neck (don't look up).", "lastTime": "" },
+        { "name": "Leg press", "short": "Leg press", "sets": 4, "reps": "10–12", "target": "", "rest": "2 min", "notes": "", "lastTime": "" },
+        { "name": "Leg curl", "short": "Leg curl", "sets": 3, "reps": "12", "target": "", "rest": "60 s", "notes": "", "lastTime": "" },
+        { "name": "Bulgarian split squat", "short": "Bulgarians", "sets": 3, "reps": "10 each leg", "target": "", "rest": "90 s", "notes": "", "lastTime": "" },
+        { "name": "Straight-arm pulldown", "short": "Straight-arm", "sets": 3, "reps": "12", "target": "", "rest": "60 s", "notes": "Lats, for V-taper.", "lastTime": "" },
+        { "name": "Calf raises", "short": "Calves", "sets": 4, "reps": "15", "target": "", "rest": "60 s", "notes": "", "lastTime": "" }
+      ]
+    }
+  ],
+  "log": [
+    {
+      "date": "2026-10-17",
+      "sessionId": "day1",
+      "inProgress": true,
+      "entries": [ { "exercise": "Bench press", "sets": ["65×6"] } ],
+      "coachNote": "Session in progress. Set 1 of bench: 65 kg × 6. If it felt easy, go 67.5 kg for the next sets."
+    }
+  ],
+  "weekly": { "goal": 4, "done": 0, "weekOf": "2026-10-12" }
+}
