@@ -1,338 +1,574 @@
 {
-  "updated": "2026-10-17T15:40:00+02:00",
+  "updated": "2026-10-17T17:28+01:00",
   "wedding": "2026-11-26",
   "notes": [
-    "End every working set 1–2 reps short of failure (unless the note says 'to failure').",
-    "Double progression: hit the top of the rep range on every set, then add weight next time.",
-    "Only managed 3 days this week? Carry the 4th day into next week, so nothing gets skipped.",
-    "Deload the week of 16 Nov: about 40% lighter, same exercises, to peak fresh for the wedding on 26 Nov.",
-    "Travel: Spain (IDIADA) 26–31 Oct. Morning sessions, 45 minutes: main lifts and shoulders first."
+    "Effort: big lifts stop 1–2 reps short of failure. Isolation moves stop 0–1 short, and the last set can go to failure (on machines, cables and dumbbells only).",
+    "A1/A2 means alternate: do A1, rest as listed, do A2, rest, then repeat. Each muscle still gets 3–4 min, so it saves time without costing gains.",
+    "Progression: hit the top of the rep range on every set at the target effort, then add the smallest jump next time (+2.5 kg on the bar, the next dumbbell, or the next pin). If reps drop two sessions in a row, take 5–10% off and build back.",
+    "Myo-reps (last lateral-raise set): go to failure, rest 5 slow breaths, do 3–5 reps, and repeat three times. Counts as about one extra set.",
+    "Readiness: if Oura readiness is under 70 or HRV sits more than about 10% under your normal for 2+ days, still train, but drop the last set of each exercise and don't add weight.",
+    "3-day week: do Day 1, Day 2, Day 3, add 1 lateral-raise set to Days 1 and 3, and skip Day 4. Next week starts again at Day 1.",
+    "Neck: the gym plan has no extra neck work, and your physio's programme covers that. Do physio exercises after lifting or at another time, not right before. No shrugs, upright rows or loaded carries. Share this plan with your physio.",
+    "Cardio: one 4×4 interval session (bike) and 1–2 easy zone-2 sessions of 30–40 min a week, on non-lifting days or at least 3 h away from lifting. Details are in plan v2.",
+    "Spain 26–31 Oct: Travel A and Travel B mornings (45 min). Deload 16–22 Nov: same exercises, about half the sets, same weights, 3–4 reps in reserve. Wedding week: one light pump session on Mon 23 Nov, then rest."
   ],
-  "nextSessionId": "day1",
+  "nextSessionId": "day2",
   "sessions": [
     {
       "id": "day1",
-      "name": "Day 1 · Upper Strength",
-      "focus": "Heavy press and pull, shoulder width, neck and posture",
+      "name": "Day 1 · Upper A · Strength + width",
+      "focus": "Bench and pull-up strength, upper chest, side delts. About 50 min. Supersets: do A1, rest, A2, rest, repeat.",
       "warmup": [
-        "Chin tucks lying on your back, 2×10 with a 5s hold each",
-        "Light pec-deck reverse flyes, 2×15",
-        "2 warm-up bench sets: empty bar ×10, then about 60% ×5"
+        "2 min easy bike or arm swings",
+        "1 light set of cable rear-delt flyes or face pulls ×15 (skip if physio already did scapular work today)",
+        "Bench ramp: empty bar ×10, 45 kg ×5, 55 kg ×3, 60 kg ×1",
+        "Neck: nothing extra here. Do your physio exercises after the session or at another time of day"
       ],
       "exercises": [
         {
-          "name": "Bench press",
+          "name": "A1 · Bench press",
           "short": "Bench",
-          "sets": 4,
+          "sets": 3,
           "reps": "4–6",
-          "target": "65 kg: stay until 6 reps on all 4 sets, then 67.5 kg",
-          "rest": "2–3 min",
-          "notes": "Shoulder blades pinched, feet planted. Stop 1–2 reps short of failure.",
-          "lastTime": "65 kg × 6, 6, 5, 4"
+          "target": "65 kg: get 6, 6, 6, then go to 67.5 kg",
+          "rest": "2 min, then A2",
+          "notes": "Stop 1–2 reps short of failure. Shoulder blades pinched, feet planted, chin neutral (don't push the head into the bench).",
+          "lastTime": "65 kg × 6, 6, 5, 4 (17 Oct, 4 sets)",
+          "how": "Lower the bar to mid-chest under control, touch, press up and slightly back. Feet push into the floor the whole set.",
+          "pair": "Superset: do A1, rest 2 min, do A2, rest 2 min, repeat until all sets are done."
         },
         {
-          "name": "Weighted pull-ups",
+          "name": "A2 · Pull-ups",
           "short": "Pull-ups",
-          "sets": 4,
-          "reps": "5–6",
-          "target": "Bodyweight: 6 reps on all 4 sets, then add weight (dip belt or a dumbbell between the feet)",
-          "rest": "2–3 min",
-          "notes": "Full hang at the bottom, chest to the bar.",
-          "lastTime": "Bodyweight × 6, 6, 4, 3"
-        },
-        {
-          "name": "Seated DB shoulder press",
-          "short": "DB press",
           "sets": 3,
-          "reps": "6–8",
-          "target": "",
-          "rest": "2 min",
-          "notes": "Back supported, don't flare the ribs.",
-          "lastTime": ""
+          "reps": "5–8",
+          "target": "Bodyweight: when you get 8, 8, 8, add 2.5 kg (dumbbell between the feet or a belt)",
+          "rest": "2 min, then A1",
+          "notes": "Stop 1–2 reps short of failure. Full hang at the bottom, drive the elbows to the hips. Don't crane the neck to the bar.",
+          "lastTime": "Bodyweight × 6, 6, 4, 3 (17 Oct)",
+          "how": "From a dead hang, pull until your chin clears the bar, then lower all the way down. No kipping. Last 1–2 reps should be slow but clean.",
+          "pair": "Superset: do A1, rest 2 min, do A2, rest 2 min, repeat until all sets are done."
         },
         {
-          "name": "Barbell row",
-          "short": "Row",
+          "name": "B1 · Low-incline DB press (15–30°)",
+          "short": "Incline DB",
           "sets": 3,
-          "reps": "6–8",
-          "target": "",
-          "rest": "2 min",
-          "notes": "Torso about 45°, pull to the lower ribs.",
-          "lastTime": ""
+          "reps": "8–12",
+          "target": "First time: about 22–24 kg per hand, aim for 10 reps with 2 in reserve, then adjust",
+          "rest": "90 s, then B2",
+          "notes": "Upper chest. Lower to a deep stretch and pause for 1 s at the bottom. Stop 1–2 reps short of failure.",
+          "lastTime": "",
+          "how": "Bench on the first or second notch (15–30°). Lower the dumbbells until you feel a stretch across the upper chest, pause 1 s, press up and in.",
+          "pair": "Superset: do B1, rest 90 s, do B2, rest 90 s, repeat until all sets are done."
         },
         {
-          "name": "Cable lateral raise",
+          "name": "B2 · Chest-supported row (machine or DB on incline bench)",
+          "short": "CS row",
+          "sets": 3,
+          "reps": "8–12",
+          "target": "First time: find 10 reps with 2 in reserve",
+          "rest": "90 s, then B1",
+          "notes": "Upper back and lats, without loading the lower back. Chest stays on the pad and the neck stays relaxed: no shrugging.",
+          "lastTime": "Barbell row 50 kg × 8, 9 (17 Oct)",
+          "how": "Lie chest-down on an incline bench (or a row machine pad), arms hanging. Pull the elbows back to your hips, squeeze 1 s, lower to a full stretch.",
+          "pair": "Superset: do B1, rest 90 s, do B2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "C1 · Cable lateral raise, one arm",
           "short": "Cable laterals",
-          "sets": 4,
-          "reps": "12–15",
-          "target": "One arm at a time",
-          "rest": "60–90 s",
-          "notes": "Last set to failure. Lead with the elbow, don't swing. This builds the capped shoulders.",
-          "lastTime": ""
-        },
-        {
-          "name": "Face pulls",
-          "short": "Face pulls",
           "sets": 3,
-          "reps": "15",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Rope to the eyes, 1s hold at the back. Good for posture.",
-          "lastTime": ""
+          "reps": "12–20",
+          "target": "3.4 kg: when the first set reaches 20, move to 5.7 kg. Last set: myo-reps (see notes)",
+          "rest": "Go straight into C2, then rest 60 s",
+          "notes": "Cable behind the body, start from the stretch. Lead with the elbow, no shrug. 0–1 reps in reserve. Last set: after failure, rest 5 breaths and do 3–5 more reps, three times.",
+          "lastTime": "3.4 kg × 13, 13, 12, 11 (17 Oct)",
+          "how": "Stand side-on to a low cable with the handle crossing behind you. Raise out to the side to shoulder height, leading with the elbow, and lower slowly to the stretch. Myo-reps on the last set: go to failure, take 5 slow breaths, do 3–5 more, three times.",
+          "pair": "Pair: do C1 (both arms), go straight into C2, then rest 60 s."
         },
         {
-          "name": "Curls + triceps pushdowns (superset)",
-          "short": "Curls/pushdowns",
-          "sets": 2,
-          "reps": "10–12 each",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Go straight from one to the other, then rest.",
-          "lastTime": ""
+          "name": "C2 · Overhead cable triceps extension",
+          "short": "OH triceps",
+          "sets": 3,
+          "reps": "10–12",
+          "target": "First time: find 12 reps with 1 in reserve",
+          "rest": "60 s, then C1",
+          "notes": "Rope over your head, facing away from the stack. Get a full stretch behind the head. Keep the ribs down and the neck neutral.",
+          "lastTime": "",
+          "how": "Rope on a high or mid cable, face away, elbows by your ears. Let the hands drop behind your head for a deep stretch, then straighten the arms fully.",
+          "pair": "Pair: after C1, do C2, rest 60 s, back to C1."
         }
-      ]
+      ],
+      "purpose": "Build bench and pull-up strength, plus upper chest, side delts and triceps.",
+      "time": "~49 min"
     },
     {
       "id": "day2",
-      "name": "Day 2 · Lower Strength",
-      "focus": "Heavy squat and hinge",
+      "name": "Day 2 · Lower A · Squat + hamstrings",
+      "focus": "Squat strength, hamstrings in the stretch, plus side-delt and calf top-up. About 47 min.",
       "warmup": [
-        "5 min bike or incline walk",
-        "Bodyweight squats ×10, leg swings ×10 each side",
-        "Ramp-up squat sets: bar ×8, 50% ×5, 70% ×3"
+        "5 min bike",
+        "Squat ramp: bar ×8, about 40% ×5, 60% ×3, 75% ×2",
+        "If the bar on the upper back irritates the neck, use a safety-squat bar or swap to hack squat (same sets)"
       ],
       "exercises": [
         {
-          "name": "Back squat",
+          "name": "Back squat (or hack squat)",
           "short": "Squat",
-          "sets": 4,
+          "sets": 3,
           "reps": "4–6",
-          "target": "",
+          "target": "First time: work up to a weight you can do for 6 with 2 in reserve, then log it",
           "rest": "3 min",
-          "notes": "Brace hard, hit depth, stop 1–2 reps short of failure.",
-          "lastTime": ""
+          "notes": "Stop 2 reps short of failure. A low-bar position takes pressure off the neck. Brace, hit depth, eyes forward and down.",
+          "lastTime": "",
+          "how": "Ramp up in a few sets, then do 3 working sets. Brace like you're about to be punched, sit down between the hips to at least parallel, drive up. Stop with 2 reps left in the tank.",
+          "pair": "Straight sets: rest 3 min between sets. Not paired, so you're fresh."
         },
         {
           "name": "Romanian deadlift",
           "short": "RDL",
           "sets": 3,
-          "reps": "6–8",
-          "target": "",
+          "reps": "6–10",
+          "target": "First time: 8 reps with 2 in reserve",
           "rest": "2 min",
-          "notes": "Hips back, bar close to the legs, feel the hamstring stretch.",
-          "lastTime": ""
+          "notes": "Hips back to a deep hamstring stretch, bar close to the legs. Straps are fine. Shoulders down, no shrugging, neck neutral.",
+          "lastTime": "",
+          "how": "Soft knees, push the hips back and slide the bar down the thighs until you feel a strong hamstring stretch (usually just below the knee). Stand up by squeezing the glutes.",
+          "pair": "Straight sets: rest 2 min."
         },
         {
-          "name": "Walking lunges",
-          "short": "Lunges",
+          "name": "C1 · Seated leg curl",
+          "short": "Seated curl",
           "sets": 3,
-          "reps": "10 each leg",
-          "target": "",
-          "rest": "90 s",
-          "notes": "Dumbbells at your sides.",
-          "lastTime": ""
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "Go straight into C2, then rest 60 s",
+          "notes": "Seated, not lying: it trains the hamstrings at a longer length. Last set to failure, then 3–5 bottom-half partials.",
+          "lastTime": "",
+          "how": "Pad just above the heels, thigh pad tight. Curl all the way, lower slowly. On the last set, after failure, add 3–5 short reps in the bottom (stretched) half.",
+          "pair": "Superset: do C1, rest 60 s, do C2, rest 60 s, repeat until all sets are done. The pair works because legs and shoulders don't compete."
         },
         {
-          "name": "Calf raises",
+          "name": "C2 · Dumbbell lateral raise",
+          "short": "DB laterals",
+          "sets": 3,
+          "reps": "12–20",
+          "target": "First time: about 8 kg, 15 reps with 1 in reserve",
+          "rest": "60 s, then C1",
+          "notes": "Seated or leaning slightly forward, stop just above parallel, no shrug. Last set: myo-reps.",
+          "lastTime": "",
+          "how": "Slight forward lean, raise the dumbbells out to the side to just above shoulder height, lower for 2–3 s. Light enough to do it without swinging.",
+          "pair": "Superset: do C1, rest 60 s, do C2, rest 60 s, repeat until all sets are done."
+        },
+        {
+          "name": "D1 · Leg extension",
+          "short": "Leg ext",
+          "sets": 3,
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "Go straight into D2, then rest 60 s",
+          "notes": "Lean back a little to stretch the front of the thigh. Last set to failure.",
+          "lastTime": "",
+          "how": "Back rest slightly reclined for a quad stretch. Kick up to straight, squeeze 1 s, lower under control.",
+          "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
+        },
+        {
+          "name": "D2 · Standing calf raise",
           "short": "Calves",
           "sets": 3,
-          "reps": "12",
-          "target": "",
-          "rest": "60 s",
-          "notes": "2s pause at the bottom.",
-          "lastTime": ""
-        },
-        {
-          "name": "Hanging leg raises",
-          "short": "Leg raises",
-          "sets": 3,
-          "reps": "12",
-          "target": "",
-          "rest": "60 s",
-          "notes": "No swinging, curl the pelvis up.",
-          "lastTime": ""
+          "reps": "8–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "60 s, then D1",
+          "notes": "2 s pause in the deep stretch at the bottom. Last set: finish with bottom-half partials.",
+          "lastTime": "",
+          "how": "Balls of the feet on the edge, drop the heels into a deep stretch and hold 2 s, then rise as high as you can. Don't bounce.",
+          "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         }
-      ]
+      ],
+      "purpose": "Squat strength and hamstrings, with a side-delt and calf top-up between leg exercises.",
+      "time": "~47 min"
     },
     {
       "id": "day3",
-      "name": "Day 3 · Upper Size",
-      "focus": "Shoulders, V-taper and neck strength",
+      "name": "Day 3 · Upper B · Shoulders + V-taper",
+      "focus": "Overhead press, lat width, upper chest, side and rear delts, arms. About 45 min, or about 50 with the optional arm block.",
       "warmup": [
-        "Chin tucks, 2×10 with a 5s hold",
-        "Neck isometrics: hand against the forehead, the back of the head and each side, 50% effort, 2×10s each"
+        "2 min easy bike or arm swings",
+        "1 light set each of DB press ×12 and pulldown ×12",
+        "Neck: nothing extra here. Physio exercises go after the session or at another time of day"
       ],
       "exercises": [
         {
-          "name": "Incline DB press",
-          "short": "Incline DB",
-          "sets": 4,
-          "reps": "8–10",
-          "target": "",
-          "rest": "2 min",
-          "notes": "",
-          "lastTime": ""
-        },
-        {
-          "name": "Wide-grip pull-ups or lat pulldown",
-          "short": "Wide pull-ups",
-          "sets": 4,
-          "reps": "10",
-          "target": "",
-          "rest": "90 s",
-          "notes": "Think elbows to the hips, which builds width.",
-          "lastTime": ""
-        },
-        {
-          "name": "Single-arm cable pulldown",
-          "short": "1-arm pulldown",
+          "name": "A1 · Seated DB shoulder press",
+          "short": "DB press",
           "sets": 3,
-          "reps": "12",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Each arm.",
-          "lastTime": ""
+          "reps": "6–10",
+          "target": "20 kg: get 3 × 10, then 22 kg",
+          "rest": "90 s, then A2",
+          "notes": "Back supported, don't flare the ribs, chin neutral. Stop 1–2 reps short of failure.",
+          "lastTime": "18 kg × 8, 18 kg × 10, 20 kg × 8 (17 Oct)",
+          "how": "Bench upright with back support. Start with the dumbbells at ear height, press up until the arms are straight, lower back to ear height. Ribs down, no arching.",
+          "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
         },
         {
-          "name": "Seated cable row",
+          "name": "A2 · Lat pulldown (neutral or shoulder-width grip)",
+          "short": "Pulldown",
+          "sets": 3,
+          "reps": "8–12",
+          "target": "First time: 10 reps with 2 in reserve",
+          "rest": "90 s, then A1",
+          "notes": "Full stretch at the top, elbows to the hips. Torso stays still and the neck stays relaxed.",
+          "lastTime": "",
+          "how": "Lean back slightly, pull the bar to the upper chest by driving the elbows down to your sides, then let the arms go fully straight at the top for the lat stretch.",
+          "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "B1 · Low-to-high cable fly",
+          "short": "Cable fly",
+          "sets": 3,
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "75 s, then B2",
+          "notes": "Upper chest. Start with the hands low and slightly behind you for the stretch, then sweep up to chin height.",
+          "lastTime": "",
+          "how": "Pulleys at the bottom. Step forward, hands low and slightly behind you, then sweep up and together to chin height with a slight bend in the elbows. This hits the upper chest.",
+          "pair": "Superset: do B1, rest 75 s, do B2, rest 75 s, repeat until all sets are done."
+        },
+        {
+          "name": "B2 · Seated cable row (neutral grip)",
           "short": "Cable row",
           "sets": 3,
-          "reps": "10–12",
-          "target": "",
-          "rest": "90 s",
-          "notes": "",
-          "lastTime": ""
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "75 s, then B1",
+          "notes": "Let the shoulder blades travel forward to a stretch, then row to the lower ribs. No shrugging.",
+          "lastTime": "",
+          "how": "Sit tall, let the weight pull the shoulders forward for a stretch, then row the handle to the lower ribs and squeeze the shoulder blades together.",
+          "pair": "Superset: do B1, rest 75 s, do B2, rest 75 s, repeat until all sets are done."
         },
         {
-          "name": "Cable Y-raise",
-          "short": "Y-raise",
-          "sets": 3,
-          "reps": "15",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Light, smooth, thumbs up.",
-          "lastTime": ""
-        },
-        {
-          "name": "Lateral raises",
+          "name": "C1 · Machine or cable lateral raise",
           "short": "Laterals",
-          "sets": 4,
-          "reps": "15",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Dumbbells, slight lean forward.",
-          "lastTime": ""
+          "sets": 3,
+          "reps": "12–20",
+          "target": "First time: 15 reps with 1 in reserve. Last set: myo-reps",
+          "rest": "Go straight into C2, then rest 60 s",
+          "notes": "Use a different tool from Day 1 (a machine if the gym has one). Bottom half is where most of the growth stimulus is, so never cut the bottom.",
+          "lastTime": "",
+          "how": "Lateral-raise machine, or a cable from behind the body if there's no machine. Raise to shoulder height, lower slowly, and never cut the bottom half short. Myo-reps on the last set.",
+          "pair": "Pair: do C1, go straight into C2, then rest 60 s."
         },
         {
-          "name": "Rear-delt flyes",
+          "name": "C2 · Reverse pec-deck (rear delts)",
           "short": "Rear delts",
           "sets": 3,
-          "reps": "15",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Pec-deck reverse or bent-over dumbbells.",
-          "lastTime": ""
+          "reps": "12–20",
+          "target": "First time: 15 reps with 1 in reserve",
+          "rest": "60 s, then C1",
+          "notes": "Arms slightly below shoulder height, pinkies leading, no shrugging. This is the posture work, replacing extra face pulls and Y-raises.",
+          "lastTime": "Face pulls 3.4 kg × 15, 5.7 kg × 18 (17 Oct)",
+          "how": "Face the pec-deck, handles at shoulder height. Sweep the arms back in a wide arc until they're in line with the body, pinkies leading. Slow on the way back.",
+          "pair": "Pair: after C1, do C2, rest 60 s, back to C1."
         },
         {
-          "name": "Prone Y-raises",
-          "short": "Prone Y",
+          "name": "D1 · Incline DB curl (optional if short on time)",
+          "short": "Incline curl",
           "sets": 2,
-          "reps": "12",
-          "target": "Very light or bodyweight",
-          "rest": "60 s",
-          "notes": "Face down on an incline bench, chin tucked. For posture.",
-          "lastTime": ""
+          "reps": "8–12",
+          "target": "First time: 10 reps with 1 in reserve",
+          "rest": "Go straight into D2, then rest 60 s",
+          "notes": "Bench at about 45°, arms hanging behind you for the long-head stretch. Last set to failure.",
+          "lastTime": "Curl/pushdown superset 14.7 × 14, 19 × 10 (17 Oct)",
+          "how": "Optional, do it only if you have time. Bench at 45°, arms hanging straight down behind your body. Curl up without moving the elbows forward, lower to a full stretch.",
+          "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         },
         {
-          "name": "Curls + triceps",
-          "short": "Curls/triceps",
-          "sets": 3,
-          "reps": "12 each",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Superset.",
-          "lastTime": ""
+          "name": "D2 · Rope pushdown (optional if short on time)",
+          "short": "Pushdown",
+          "sets": 2,
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "60 s, then D1",
+          "notes": "Elbows pinned, full lockout. Last set to failure.",
+          "lastTime": "",
+          "how": "Optional. Rope on a high cable, elbows pinned to your sides. Push down until the arms are locked straight, split the rope at the bottom.",
+          "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         }
-      ]
+      ],
+      "purpose": "Shoulders and V-taper: overhead press, lat width, upper chest, side and rear delts.",
+      "time": "~44 min, ~50 with the optional arms"
     },
     {
       "id": "day4",
-      "name": "Day 4 · Lower Size",
-      "focus": "Hinge strength, leg volume and lats",
+      "name": "Day 4 · Lower B · Legs + lats + delts",
+      "focus": "Quads and glutes with machines, hamstrings, plus a third lat session and a fourth side-delt session. About 47 min.",
       "warmup": [
         "5 min bike",
-        "Hip hinges and glute bridges ×10",
-        "Ramp-up deadlift sets: 40% ×5, 60% ×3, 80% ×1"
+        "Leg press ramp: 2 lighter sets ×10 and ×5"
       ],
       "exercises": [
         {
-          "name": "Deadlift",
-          "short": "Deadlift",
-          "sets": 3,
-          "reps": "3–5",
-          "target": "",
-          "rest": "3 min",
-          "notes": "Reset each rep, neutral neck (don't look up).",
-          "lastTime": ""
-        },
-        {
-          "name": "Leg press",
+          "name": "Leg press (or hack squat)",
           "short": "Leg press",
-          "sets": 4,
-          "reps": "10–12",
-          "target": "",
+          "sets": 3,
+          "reps": "8–12",
+          "target": "First time: 10 reps with 2 in reserve",
           "rest": "2 min",
-          "notes": "",
-          "lastTime": ""
+          "notes": "Deep: knees well past 90°, lower back stays on the pad. Stop 1–2 reps short of failure.",
+          "lastTime": "",
+          "how": "Feet shoulder-width in the middle of the platform. Lower until the knees are well past 90° without the lower back peeling off the pad, then press up (don't lock out hard).",
+          "pair": "Straight sets: rest 2 min."
         },
         {
-          "name": "Leg curl",
-          "short": "Leg curl",
-          "sets": 3,
-          "reps": "12",
-          "target": "",
-          "rest": "60 s",
-          "notes": "",
-          "lastTime": ""
-        },
-        {
-          "name": "Bulgarian split squat",
+          "name": "Bulgarian split squat (dumbbells)",
           "short": "Bulgarians",
-          "sets": 3,
-          "reps": "10 each leg",
-          "target": "",
-          "rest": "90 s",
-          "notes": "",
-          "lastTime": ""
+          "sets": 2,
+          "reps": "8–12 each leg",
+          "target": "First time: 10 per leg with 2 in reserve",
+          "rest": "75 s after both legs",
+          "notes": "Long stride, torso slightly forward for the glutes. Hold the dumbbells low (no traps).",
+          "lastTime": "",
+          "how": "Back foot on a bench, front foot a long stride ahead. Drop the back knee straight down, lean slightly forward, push up through the front heel. All reps on one leg, then switch.",
+          "pair": "Straight sets: do both legs, rest 75 s."
         },
         {
-          "name": "Straight-arm pulldown",
-          "short": "Straight-arm",
+          "name": "C1 · Lying leg curl",
+          "short": "Lying curl",
           "sets": 3,
-          "reps": "12",
-          "target": "",
-          "rest": "60 s",
-          "notes": "Lats, for V-taper.",
-          "lastTime": ""
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "Go straight into C2, then rest 60 s",
+          "notes": "Hips pressed into the pad. Last set to failure, then 3–5 bottom-half partials.",
+          "lastTime": "",
+          "how": "Lie face down, pad just above the heels, hips pressed into the bench. Curl up, lower slowly. Last set: to failure, then 3–5 bottom-half partials.",
+          "pair": "Superset: do C1, rest 60 s, do C2, rest 60 s, repeat until all sets are done."
         },
         {
-          "name": "Calf raises",
-          "short": "Calves",
-          "sets": 4,
-          "reps": "15",
-          "target": "",
-          "rest": "60 s",
-          "notes": "",
-          "lastTime": ""
+          "name": "C2 · One-arm cable pulldown (half-kneeling)",
+          "short": "1-arm pulldown",
+          "sets": 3,
+          "reps": "10–15 each arm",
+          "target": "First time: 12 per arm with 1 in reserve",
+          "rest": "60 s, then C1",
+          "notes": "Reach up for the full lat stretch, pull the elbow to the hip. Neck relaxed, no shrugging.",
+          "lastTime": "",
+          "how": "Half-kneel beside a high cable, one hand on the handle. Reach up for a full lat stretch, then pull the elbow down to your hip. All reps one arm, then the other.",
+          "pair": "Superset: do C1, rest 60 s, do C2, rest 60 s, repeat until all sets are done."
+        },
+        {
+          "name": "D1 · Dumbbell lateral raise",
+          "short": "DB laterals",
+          "sets": 3,
+          "reps": "15–25",
+          "target": "Lighter than Day 2: about 6–8 kg, 20 reps. Last set: myo-reps",
+          "rest": "Go straight into D2, then rest 60 s",
+          "notes": "High reps for the side delts. Strict, no shrug.",
+          "lastTime": "",
+          "how": "Same as Day 2 but lighter and for higher reps (15–25). Strict, no shrugging. Myo-reps on the last set.",
+          "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
+        },
+        {
+          "name": "D2 · Seated calf raise",
+          "short": "Seated calves",
+          "sets": 3,
+          "reps": "10–15",
+          "target": "First time: 12 reps with 1 in reserve",
+          "rest": "60 s, then D1",
+          "notes": "2 s pause at the bottom stretch. Last set: bottom-half partials.",
+          "lastTime": "",
+          "how": "Knees under the pad, balls of the feet on the edge. Drop the heels into a deep stretch, hold 2 s, rise up. This hits the lower calf (soleus).",
+          "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         }
-      ]
+      ],
+      "purpose": "Quads and glutes on machines, hamstrings, plus a third lat session and a fourth side-delt session.",
+      "time": "~47 min"
+    },
+    {
+      "id": "travel1",
+      "name": "Travel A · 45 min (Spain)",
+      "focus": "Hotel or commercial gym, morning. Push, pull, legs and delts in about 41 min. If the gym has dumbbells only or machines only, use the swaps in the notes.",
+      "warmup": [
+        "3 min brisk walk, bike or stairs",
+        "1 light set of the first two exercises ×12"
+      ],
+      "exercises": [
+        {
+          "name": "A1 · DB bench press (or machine chest press)",
+          "short": "DB bench",
+          "sets": 3,
+          "reps": "6–10",
+          "target": "About 26–28 kg per hand, or use RIR: stop 1–2 reps short of failure",
+          "rest": "90 s, then A2",
+          "notes": "Dumbbells only: DB bench. Machines only: chest press. No bench: push-ups with feet raised, to 1–2 reps short of failure.",
+          "lastTime": "",
+          "how": "Dumbbells start at chest level, press up and slightly together, lower to a good stretch. If there are no heavy dumbbells, do push-ups with feet raised and stop 1–2 reps short of failure.",
+          "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "A2 · Pull-ups (or lat pulldown)",
+          "short": "Pull-ups",
+          "sets": 3,
+          "reps": "6–10",
+          "target": "Bodyweight, 1–2 reps short of failure",
+          "rest": "90 s, then A1",
+          "notes": "Machines only: pulldown. No bar: one-arm DB row (3 × 10–12 per arm).",
+          "lastTime": "",
+          "how": "Same as at home: dead hang, chin over the bar, full lowering. No bar? Do a pulldown or one-arm DB row.",
+          "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "B1 · Goblet squat (or leg press)",
+          "short": "Goblet",
+          "sets": 3,
+          "reps": "10–15",
+          "target": "Heaviest dumbbell, 1–2 reps short of failure",
+          "rest": "75 s, then B2",
+          "notes": "Dumbbells only: goblet squat, or Bulgarian split squat if the heaviest dumbbell is too light. Machines only: leg press.",
+          "lastTime": "",
+          "how": "Hold one heavy dumbbell at your chest, sit down between the knees with the chest up, stand. If the heaviest dumbbell feels easy, slow the lowering to 3 s or switch to Bulgarians.",
+          "pair": "Superset: do B1, rest 75 s, do B2, rest 75 s, repeat until all sets are done."
+        },
+        {
+          "name": "B2 · One-arm DB row (or seated cable or machine row)",
+          "short": "1-arm row",
+          "sets": 3,
+          "reps": "8–12 each arm",
+          "target": "1–2 reps short of failure",
+          "rest": "75 s, then B1",
+          "notes": "Hand on a bench, pull to the hip, no shrugging.",
+          "lastTime": "",
+          "how": "One hand and knee on a bench, flat back. Pull the dumbbell to your hip, lower to a full stretch. All reps one arm, then the other.",
+          "pair": "Superset: do B1, rest 75 s, do B2, rest 75 s, repeat until all sets are done."
+        },
+        {
+          "name": "C1 · DB lateral raise",
+          "short": "Laterals",
+          "sets": 3,
+          "reps": "12–20",
+          "target": "1 rep short of failure. Last set: myo-reps",
+          "rest": "Go straight into C2, then rest 45 s",
+          "notes": "Machines only: machine or cable lateral raise.",
+          "lastTime": "",
+          "how": "Same as at home. Strict, no swinging. Myo-reps on the last set.",
+          "pair": "Pair: do C1, go straight into C2, then rest 45 s."
+        },
+        {
+          "name": "C2 · Overhead DB triceps extension",
+          "short": "OH triceps",
+          "sets": 2,
+          "reps": "10–15",
+          "target": "1 rep short of failure",
+          "rest": "45 s, then C1",
+          "notes": "One dumbbell held in both hands, seated.",
+          "lastTime": "",
+          "how": "Seated, one dumbbell in both hands overhead. Lower behind the head to a deep stretch, then straighten.",
+          "pair": "Pair: after C1, do C2, rest 45 s, back to C1."
+        }
+      ],
+      "purpose": "Spain morning session: push, pull, legs and delts, with swaps for any hotel gym.",
+      "time": "~41 min"
+    },
+    {
+      "id": "travel2",
+      "name": "Travel B · 45 min (Spain)",
+      "focus": "Hotel or commercial gym, morning. Shoulders, lats, hamstrings, upper chest, about 45 min. If you only get 30 min, do blocks A and C.",
+      "warmup": [
+        "3 min brisk walk, bike or stairs",
+        "1 light set of DB press ×12"
+      ],
+      "exercises": [
+        {
+          "name": "A1 · Seated DB shoulder press (or machine press)",
+          "short": "DB press",
+          "sets": 3,
+          "reps": "6–10",
+          "target": "20 kg, as at home",
+          "rest": "90 s, then A2",
+          "notes": "Back supported, chin neutral.",
+          "lastTime": "",
+          "how": "Same as Day 3 at home. Back supported, dumbbells from ear height to straight arms.",
+          "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "A2 · Lat pulldown (or pull-ups)",
+          "short": "Pulldown",
+          "sets": 3,
+          "reps": "8–12",
+          "target": "1–2 reps short of failure",
+          "rest": "90 s, then A1",
+          "notes": "Dumbbells only: pull-ups if there's a bar, otherwise a DB pullover on a bench (3 × 12).",
+          "lastTime": "",
+          "how": "Same as Day 3. No machine? Pull-ups, or a DB pullover lying across a bench.",
+          "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "B1 · DB Romanian deadlift (or machine leg curl)",
+          "short": "DB RDL",
+          "sets": 3,
+          "reps": "8–12",
+          "target": "Heaviest dumbbells, 1–2 reps short of failure",
+          "rest": "90 s, then B2",
+          "notes": "Deep hamstring stretch. Straps are fine. Machines only: seated leg curl.",
+          "lastTime": "",
+          "how": "Dumbbells in front of the thighs, push the hips back until you feel a deep hamstring stretch, stand up by squeezing the glutes. Back flat, neck neutral.",
+          "pair": "Superset: do B1, rest 90 s, do B2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "B2 · Incline DB press (or incline machine press)",
+          "short": "Incline DB",
+          "sets": 3,
+          "reps": "8–12",
+          "target": "1–2 reps short of failure",
+          "rest": "90 s, then B1",
+          "notes": "No incline bench: flat DB press or deficit push-ups.",
+          "lastTime": "",
+          "how": "Bench on a low incline. Lower to a deep stretch at the upper chest, pause 1 s, press.",
+          "pair": "Superset: do B1, rest 90 s, do B2, rest 90 s, repeat until all sets are done."
+        },
+        {
+          "name": "C1 · DB lateral raise",
+          "short": "Laterals",
+          "sets": 3,
+          "reps": "12–20",
+          "target": "1 rep short of failure. Last set: myo-reps",
+          "rest": "Go straight into C2, then rest 45 s",
+          "notes": "",
+          "lastTime": "",
+          "how": "Same as at home. Myo-reps on the last set.",
+          "pair": "Pair: do C1, go straight into C2, then rest 45 s."
+        },
+        {
+          "name": "C2 · Rear-delt fly (DB bent-over or reverse pec-deck)",
+          "short": "Rear delts",
+          "sets": 2,
+          "reps": "12–20",
+          "target": "1 rep short of failure",
+          "rest": "45 s, then C1",
+          "notes": "Chest on an incline bench takes load off the lower back and neck.",
+          "lastTime": "",
+          "how": "Chest on an incline bench, dumbbells hanging. Sweep the arms out wide, pinkies leading, to shoulder height. Light weight, slow.",
+          "pair": "Pair: after C1, do C2, rest 45 s, back to C1."
+        },
+        {
+          "name": "DB reverse lunge",
+          "short": "Lunges",
+          "sets": 2,
+          "reps": "10 each leg",
+          "target": "1–2 reps short of failure",
+          "rest": "60 s after both legs",
+          "notes": "Skip it if you're short on time: legs are on maintenance this week.",
+          "lastTime": "",
+          "how": "Optional, skip if you're short on time. Step back into a lunge until the back knee nearly touches the floor, push back up through the front heel.",
+          "pair": "Straight sets: do both legs, rest 60 s."
+        }
+      ],
+      "purpose": "Spain morning session: shoulders, lats, hamstrings and upper chest. Only 30 min? Do blocks A and C.",
+      "time": "~45 min"
     }
   ],
   "log": [
     {
       "date": "2026-10-17",
       "sessionId": "day1",
-      "inProgress": true,
       "entries": [
         {
           "exercise": "Bench press",
@@ -351,14 +587,167 @@
             "BW×4",
             "BW×3"
           ]
+        },
+        {
+          "exercise": "Seated DB shoulder press",
+          "sets": [
+            "18×8",
+            "18×10",
+            "20×8"
+          ]
+        },
+        {
+          "exercise": "Barbell row",
+          "sets": [
+            "30×13",
+            "50×8",
+            "50×9"
+          ]
+        },
+        {
+          "exercise": "Cable lateral raise",
+          "sets": [
+            "3.4×13",
+            "3.4×13",
+            "3.4×12",
+            "3.4×11"
+          ]
+        },
+        {
+          "exercise": "Face pulls",
+          "sets": [
+            "3.4×15",
+            "5.7×18"
+          ]
+        },
+        {
+          "exercise": "Curls + triceps pushdowns (superset)",
+          "sets": [
+            "14.7×14",
+            "19×10"
+          ]
         }
       ],
-      "coachNote": "Session in progress. Bench 65 × 6, 6, 5, 4: stay at 65 kg until all 4 sets hit 6. Pull-ups BW × 6, 6, 4, 3: stay at bodyweight until all 4 sets hit 6, then add weight."
+      "coachNote": "Old plan (v1) Day 1, 22 of 23 sets. Bench 65 × 6, 6, 5, 4 and pull-ups BW × 6, 6, 4, 3 set the starting points for plan v2. DB press reached 20 kg × 8, laterals 3.4 kg × 11–13. Plan v2 starts with Day 2 (Lower A).",
+      "sessionName": "Day 1 · Upper Strength (old plan)"
     }
   ],
   "weekly": {
     "goal": 4,
-    "done": 0,
+    "done": 1,
     "weekOf": "2026-10-12"
-  }
+  },
+  "planVersion": 2,
+  "howItWorks": [
+    {
+      "t": "Effort (RIR)",
+      "d": "RIR means reps in reserve: how many more clean reps you could do. Big lifts stop at RIR 1–2. Isolation exercises stop at RIR 0–1, and their last set can go to failure. Never take barbell lifts to failure."
+    },
+    {
+      "t": "Progression",
+      "d": "Stay at a weight until every set hits the top of the rep range, then add the smallest jump next time (+2.5 kg on the bar, the next dumbbell or the next pin). If reps drop two sessions in a row, take 5–10% off and build back up."
+    },
+    {
+      "t": "Supersets (A1/A2)",
+      "d": "Do A1, rest the listed time, do A2, rest, repeat. The two exercises don't compete (push with pull, legs with shoulders), so each muscle still gets 3–4 min, and the session is about a third shorter."
+    },
+    {
+      "t": "Myo-reps",
+      "d": "Last lateral-raise set only: go to failure, take 5 slow breaths, do 3–5 more reps, and repeat three times. It counts as about one extra set."
+    },
+    {
+      "t": "Week 1 is calibration",
+      "d": "For new exercises, start a bit light (RIR 2–3) and log what you lift. From week 3 you push closer to failure."
+    },
+    {
+      "t": "Only 3 days this week?",
+      "d": "Do Day 1, 2 and 3, add one lateral-raise set (myo-reps) to Days 1 and 3, and skip Day 4. Next week starts at Day 1 again."
+    },
+    {
+      "t": "Cardio",
+      "d": "Once a week, 4×4 on a bike: 8 min easy, then 4 × 4 min hard (could just about hold a conversation in single words) with 3 min easy between. Plus 1–2 zone-2 sessions of 30–40 min: brisk incline walk or easy bike where you can still speak in full sentences and breathe through your nose. Keep the 4×4 away from lifting and not the day before a leg day."
+    },
+    {
+      "t": "Neck and physio",
+      "d": "There's no extra neck work in the gym, because your physio covers it. Do physio after lifting or at another time of day, not right before. No shrugs, upright rows, loaded carries or deadlifts. Show your physio this plan; their advice wins."
+    },
+    {
+      "t": "Oura readiness",
+      "d": "If readiness is under 70, or HRV is more than about 10% under your normal for 2+ days, still train, but drop the last set of each exercise and don't add weight."
+    },
+    {
+      "t": "Spain 26–31 Oct",
+      "d": "Travel A on Tue and Travel B on Thu in the morning (optional A again on Fri), 45 min max. Each exercise lists hotel-gym swaps. Send me 'starting' when you walk in. Walk a lot for cardio."
+    },
+    {
+      "t": "Deload 16–22 Nov",
+      "d": "Same exercises and weights, about half the sets (3 becomes 2), stopping 3–4 reps short. You recover fully without losing anything."
+    },
+    {
+      "t": "Wedding week",
+      "d": "Mon 23 Nov: light Day 3 pump (2 sets each, ~30 min). Tue: optional easy 20 min, no legs to failure. Wed: rest and walk. Thu 26 Nov: you arrive fresh, full and not sore."
+    }
+  ],
+  "why": [
+    {
+      "t": "Weekly volume and frequency: Pelland et al. 2025",
+      "u": "https://doi.org/10.1007/s40279-025-02344-w"
+    },
+    {
+      "t": "~11 sets per muscle per session cap: Remmert, Pelland et al. 2025",
+      "u": "https://doi.org/10.51224/srxiv.537"
+    },
+    {
+      "t": "Stopping 1–2 reps short works as well as failure: Refalo et al. 2023",
+      "u": "https://doi.org/10.1007/s40279-022-01784-y"
+    },
+    {
+      "t": "Same in trained lifters: Refalo et al. 2024",
+      "u": "https://doi.org/10.1080/02640414.2024.2321021"
+    },
+    {
+      "t": "Rest periods: Singer, Schoenfeld et al. 2024",
+      "u": "https://doi.org/10.3389/fspor.2024.1429789"
+    },
+    {
+      "t": "Supersets save ~37% time, same gains: Zhang et al. 2025",
+      "u": "https://doi.org/10.1007/s40279-025-02176-8"
+    },
+    {
+      "t": "Time-efficient training: Iversen et al. 2021",
+      "u": "https://doi.org/10.1007/s40279-021-01490-1"
+    },
+    {
+      "t": "Training in the stretch: Wolf, Nippard, Schoenfeld et al. 2025",
+      "u": "https://doi.org/10.7717/peerj.18904"
+    },
+    {
+      "t": "Side-delt volume and frequency: RP / Israetel",
+      "u": "https://rpstrength.com/blogs/articles/side-delt-hypertrophy-training-tips"
+    },
+    {
+      "t": "Per-session volume: Menno Henselmans",
+      "u": "https://mennohenselmans.com/this-is-the-max-volume-you-should-do-per-workout/"
+    },
+    {
+      "t": "Cardio doesn't blunt muscle: Schumann et al. 2022",
+      "u": "https://doi.org/10.1007/s40279-021-01587-7"
+    },
+    {
+      "t": "4×4 intervals for VO2max: Helgerud et al. 2007",
+      "u": "https://doi.org/10.1249/mss.0b013e3180304570"
+    },
+    {
+      "t": "Zone 2 review: Storoschuk et al. 2025",
+      "u": "https://pubmed.ncbi.nlm.nih.gov/40560504/"
+    },
+    {
+      "t": "Deloads: Bell et al. 2023",
+      "u": "https://doi.org/10.1186/s40798-023-00633-0"
+    },
+    {
+      "t": "Holding muscle on low volume: Bickel et al. 2011",
+      "u": "https://doi.org/10.1249/MSS.0b013e318207c15d"
+    }
+  ]
 }

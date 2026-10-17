@@ -48,7 +48,9 @@ Note: bench felt easy
 `✓` means he ticked the set without typing numbers. Use the session's `target` as the assumed load.
 
 ## Notes
-- Phone-side ticks are stored in localStorage per date and session (`workout.v1.YYYY-MM-DD.dayN`); the repo never sees them.
+- Phone-side ticks are stored in localStorage per plan version, date and session (`workout.v<planVersion>.YYYY-MM-DD.dayN`; plan v2 = `workout.v2.…`, the old plan's ticks stay under `workout.v1.…`); the repo never sees them. **Bump `planVersion` whenever sessions change shape** (exercises added, removed or reordered), so old ticks are never remapped onto different exercises. A day-pick made under an older version for a session already ticked under it is ignored, so the app falls back to `nextSessionId`.
+- Plan v2 fields (all optional; the page works without them): session `purpose` and `time`; exercise `how` (form how-to, shown under "How to do it") and `pair` (superset instruction); top-level `howItWorks` [{t, d}] (Program tab "How this plan works"; replaces the `notes` list when present) and `why` [{t, u}] (source links, https only). A log entry can carry `sessionName` to show its original name (e.g. the 17 Oct old-plan session).
+- Rebuild from the v2 sources: `python3 /workspace/workout-plan-v2/merge_live.py` (keeps live log + weekly). Tests: `node /workspace/workout-tests/test-sync.js`, `node /workspace/workout-tests/test-v2-local.js [url]`.
 - Keep `shot-*.png` out of the repo (it's gitignored).
 
 ## Live sync (Supabase: Meal Tracker + Workout)

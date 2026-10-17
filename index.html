@@ -184,7 +184,7 @@ textarea:focus,input:focus{border-color:rgba(255,255,255,.4)}
 /* Workout */
 .sub#subtitle{display:block;text-align:center;font-size:15px;color:var(--text);margin:12px auto 0;padding:6px 12px 8px;border-bottom:1px solid var(--text);width:max-content;max-width:100%}
 .hdr h1#title{display:none}
-.picker{justify-content:center;margin-top:6px}
+.picker{justify-content:flex-start;margin-top:6px}.picker>.pill:first-child{margin-left:auto}.picker>.pill:last-child{margin-right:auto}
 .pill .dot{background:var(--status)}
 .th-hero{margin:30px 0 0}
 .th-num{display:flex;align-items:baseline;gap:8px;font-size:84px;line-height:1;font-weight:200;letter-spacing:-.04em}
@@ -238,6 +238,26 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
 .syncsec .inp{display:block;width:100%;height:46px;padding:0 14px;font-size:16px;outline:none;margin-bottom:10px}
 .syncsec .btns{display:flex;gap:10px}.syncsec .btns .btn{margin-top:0}
 .syncsec h3{font-size:20px}
+/* Plan v2: how-to details, session info, how-it-works */
+.sinfo{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chipi{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:99px;background:var(--frost);border:.5px solid var(--frost-bd);font-size:13px;font-weight:600;color:var(--text)}
+.howlink{display:inline-flex;align-items:center;height:30px;padding:0 12px;border-radius:99px;background:rgba(79,208,162,.14);border:.5px solid rgba(79,208,162,.35);font-size:13px;font-weight:600;color:var(--status)}
+details.how{margin:8px 0 2px;border-radius:14px;background:rgba(255,255,255,.05);border:.5px solid var(--line2)}
+details.how summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:42px;padding:0 14px;font-size:14px;font-weight:600;color:var(--text)}
+details.how summary::-webkit-details-marker{display:none}
+details.how summary:after{content:"⌄";color:var(--muted);font-size:16px;line-height:1;margin-top:-4px}
+details.how[open] summary:after{content:"⌃";margin-top:4px}
+details.how p{margin:0 14px 10px;font-size:14px;line-height:1.5;color:var(--text2)}
+details.how p.pr{color:var(--status);font-weight:500}
+.card-s .pp{font-size:14px;color:var(--text2);margin:2px 0 4px}
+.hiw{margin:0;padding:0;list-style:none}
+.hiw li{padding:12px 0;border-top:.5px solid var(--line);font-size:14px;line-height:1.5;color:var(--text2)}
+.hiw li:first-child{border-top:0;padding-top:0}
+.hiw b{display:block;font-size:15px;font-weight:700;color:var(--text);margin-bottom:2px}
+.why{margin-top:14px;font-size:13px;color:var(--muted);line-height:1.5}
+.why b{color:var(--text);font-weight:700}
+.why a{display:block;color:var(--text2);text-decoration:none;padding:7px 0;border-top:.5px solid var(--line)}
+.why a:after{content:" ↗";color:var(--muted)}
 </style>
 </head>
 <body>
@@ -277,8 +297,20 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
       .catch(function (e) { var c = load('workout.v1.plan', null); if (c) { plan = c; render(); toast('Offline: showing the saved plan'); } else $('v-today').innerHTML = '<div class="err">Couldn’t load plan.json (' + esc(e.message) + ').</div>'; });
   }
   function sessionById(id) { return (plan.sessions || []).filter(function (s) { return s.id === id; })[0]; }
-  function pickedId() { return load('workout.v1.pick.' + today(), null) || plan.nextSessionId || (plan.sessions[0] && plan.sessions[0].id); }
-  function stateKey(sid) { return 'workout.v1.' + today() + '.' + sid; }
+  // Plan versions: ticks are stored per plan version (workout.v1.* for the old plan, workout.v2.* for plan v2 ...), so ticks
+  // made under an older plan are never remapped onto a changed session. Old data stays in localStorage untouched.
+  function pv() { return (plan && plan.planVersion) || 1; }
+  function skey(date, sid) { return 'workout.v' + pv() + '.' + date + '.' + sid; }
+  function stateKey(sid) { return skey(today(), sid); }
+  function savePick(id) { save('workout.v1.pick.' + today(), id); save('workout.pickpv.' + today(), pv()); }
+  function pickedId() {
+    var p = load('workout.v1.pick.' + today(), null);
+    // a pick made today under an older plan, for a session already ticked under that plan: fall back to "next up"
+    if (p && pv() > 1 && load('workout.pickpv.' + today(), 1) !== pv() && load('workout.v' + (pv() - 1) + '.' + today() + '.' + p, null) && !load(stateKey(p), null)) p = null;
+    if (p && !sessionById(p)) p = null;
+    return p || plan.nextSessionId || (plan.sessions[0] && plan.sessions[0].id);
+  }
+  function sessLabel(n) { return (String(n).match(/^(Day \d+|Travel [A-Z])/) || [n])[0]; }
   function getState(s) {
     var st = load(stateKey(s.id), null);
     if (!st) {
@@ -326,7 +358,7 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
     clearTimeout(syncTimer); syncTimer = setTimeout(flushSync, 1500); renderSync();
   }
   function snapshot(k) {
-    var a = k.split('|'), date = a[0], s = plan && sessionById(a[1]), st = load('workout.v1.' + date + '.' + a[1], null);
+    var a = k.split('|'), date = a[0], s = plan && sessionById(a[1]), st = plan ? load(skey(date, a[1]), null) : null;
     if (!s || !st) return null;
     var sets = [], last = st.started || 0;
     s.exercises.forEach(function (ex, i) {
@@ -335,7 +367,7 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
         sets.push({ exercise: ex.name, set: j + 1, kg: String(x.w || ''), reps: String(x.r || ''), done: !!x.d, time: x.t ? hm(x.t) : '' });
       });
     });
-    return { app: 'workout', v: 2, date: date, sessionId: s.id, sessionName: s.name, startedAt: st.started ? new Date(st.started).toISOString() : '', started: stamp(st.started), updated: stamp(st.u || last || Date.now()), note: String(st.note || ''), sets: sets };
+    return { app: 'workout', v: 2, planVersion: pv(), date: date, sessionId: s.id, sessionName: s.name, startedAt: st.started ? new Date(st.started).toISOString() : '', started: stamp(st.started), updated: stamp(st.u || last || Date.now()), note: String(st.note || ''), sets: sets };
   }
   function flushSync() {
     var url = syncUrl(), q = load(SK.q, []);
@@ -413,12 +445,13 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
     var s = sessionById(pickedId()); if (!s) { $('v-today').innerHTML = '<div class="err">No session found.</div>'; return; }
     var st = getState(s), total = 0, done = 0;
     s.exercises.forEach(function (ex, i) { st.ex[i].forEach(function (x) { total++; if (x.d) done++; }); });
-    $('title').textContent = s.name.replace(/^Day \d+\s*·\s*/, '');
-    $('subtitle').textContent = (s.name.match(/^Day \d+/) || [''])[0] + (s.id === plan.nextSessionId ? ' · next up' : '') + ' · ' + nice(today());
+    $('title').textContent = s.name.replace(/^(Day \d+|Travel [A-Z])\s*·\s*/, '');
+    $('subtitle').textContent = sessLabel(s.name) + (s.id === plan.nextSessionId ? ' · next up' : '') + ' · ' + nice(today());
     var h = '<div class="sec"><div class="picker">' + plan.sessions.map(function (x) {
-      return '<button class="pill' + (x.id === s.id ? ' on' : '') + '" data-pick="' + esc(x.id) + '">' + esc((x.name.match(/^Day \d+/) || [x.name])[0]) + (x.id === plan.nextSessionId ? '<span class="dot"></span>' : '') + '</button>';
+      return '<button class="pill' + (x.id === s.id ? ' on' : '') + '" data-pick="' + esc(x.id) + '">' + esc(sessLabel(x.name)) + (x.id === plan.nextSessionId ? '<span class="dot"></span>' : '') + '</button>';
     }).join('') + '</div>';
-    h += '<div class="sub" style="margin-top:10px">' + esc(s.focus || '') + '</div>';
+    h += '<div class="sub" style="margin-top:10px">' + esc(s.purpose || s.focus || '') + '</div>';
+    if (s.time || plan.howItWorks) h += '<div class="sinfo">' + (s.time ? '<span class="chipi">⏱ ' + esc(s.time) + '</span>' : '') + '<span class="chipi">' + total + ' sets</span>' + (plan.howItWorks ? '<button class="howlink" data-how="1">How this plan works ›</button>' : '') + '</div>';
     h += '<div class="prog"><div class="track"><div class="fill" style="width:' + (total ? done / total * 100 : 0).toFixed(1) + '%"></div></div><span>' + done + ' / ' + total + ' sets</span></div></div>';
     if (s.warmup && s.warmup.length) h += '<div class="sec"><h3>Warm-up</h3><ul class="wu">' + s.warmup.map(function (w) { return '<li>' + esc(w) + '</li>'; }).join('') + '</ul></div>';
     s.exercises.forEach(function (ex, i) {
@@ -426,7 +459,9 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
       if (ex.target) h += '<dt>Target</dt><dd class="tg">' + esc(ex.target) + '</dd>';
       if (ex.rest) h += '<dt>Rest</dt><dd>' + esc(ex.rest) + '</dd>';
       if (ex.lastTime) h += '<dt>Last time</dt><dd>' + esc(ex.lastTime) + '</dd>';
-      h += '</dl>' + (ex.notes ? '<div class="note">' + esc(ex.notes) + '</div>' : '') + '<div class="sets">';
+      h += '</dl>' + (ex.notes ? '<div class="note">' + esc(ex.notes) + '</div>' : '');
+      if (ex.how || ex.pair) h += '<details class="how"><summary>How to do it</summary>' + (ex.how ? '<p>' + esc(ex.how) + '</p>' : '') + (ex.pair ? '<p class="pr">' + esc(ex.pair) + '</p>' : '') + '</details>';
+      h += '<div class="sets">';
       st.ex[i].forEach(function (x, j) {
         h += '<div class="set' + (x.d ? ' done' : '') + '"><button class="chk' + (x.d ? ' on' : '') + '" data-ck="' + i + ':' + j + '" aria-label="Set ' + (j + 1) + ' done"><span></span></button><span class="slbl">Set ' + (j + 1) + '</span>' +
           '<input type="text" inputmode="decimal" autocomplete="off" spellcheck="false" placeholder="BW" aria-label="kg" data-kg="' + i + ':' + j + '" value="' + esc(x.w || defaultKg(st, ex, i, j)) + '"><span class="x">kg ×</span>' +
@@ -458,13 +493,17 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
     var sp = document.querySelector('#v-today .prog span'); if (sp) sp.textContent = done + ' / ' + total + ' sets';
   }
   function renderProgram() {
-    var h = '';
+    var h = plan.howItWorks ? '<div class="sec" style="padding-bottom:0"><button class="howlink" data-how="1">How this plan works ›</button></div>' : '';
     plan.sessions.forEach(function (s) {
-      h += '<div class="sec card-s"><h2>' + esc(s.name) + (s.id === plan.nextSessionId ? '<span class="tag">next</span>' : '') + '</h2><div class="f">' + esc(s.focus || '') + '</div>';
+      h += '<div class="sec card-s"><h2>' + esc(s.name) + (s.id === plan.nextSessionId ? '<span class="tag">next</span>' : '') + '</h2><div class="f">' + esc(s.time ? '⏱ ' + s.time : (s.focus || '')) + '</div>' + (s.purpose ? '<div class="pp">' + esc(s.purpose) + '</div>' : '');
       s.exercises.forEach(function (ex) { h += '<div class="row"><span>' + esc(ex.name) + '</span><span>' + esc(ex.sets) + ' × ' + esc(ex.reps) + '</span></div>'; });
       h += '<button class="open" data-open="' + esc(s.id) + '">Open in Today</button></div>';
     });
-    if (plan.notes && plan.notes.length) h += '<div class="sec"><h3>Rules</h3><ol class="rules">' + plan.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ol></div>';
+    if (plan.howItWorks && plan.howItWorks.length) {
+      h += '<div class="sec" id="howsec"><h3>How this plan works</h3><ul class="hiw">' + plan.howItWorks.map(function (n) { return '<li><b>' + esc(n.t) + '</b>' + esc(n.d) + '</li>'; }).join('') + '</ul>';
+      if (plan.why && plan.why.length) h += '<div class="why"><b>Why:</b> built from current research and evidence-based coaches. Key sources:' + plan.why.map(function (w) { return /^https:\/\//.test(w.u) ? '<a href="' + esc(w.u) + '" target="_blank" rel="noopener">' + esc(w.t) + '</a>' : ''; }).join('') + '</div>';
+      h += '</div>';
+    } else if (plan.notes && plan.notes.length) h += '<div class="sec"><h3>Rules</h3><ol class="rules">' + plan.notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ol></div>';
     h += '<div class="sec syncsec"><h3>Live sync</h3>' +
       '<input class="inp" id="syncUrl" type="url" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Setup link or Supabase project URL" value="' + esc(syncCfg.url || '') + '">' +
       '<input class="inp" id="syncAnon" type="text" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Anon key (public)" value="' + esc(syncCfg.anon || '') + '">' +
@@ -484,7 +523,7 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
     if (!log.length) h += '<div class="sec empty">No sessions logged yet.</div>';
     log.forEach(function (lg) {
       var s = sessionById(lg.sessionId);
-      h += '<div class="sec lg"><div class="d">' + esc(nice(lg.date)) + '</div><h2>' + esc(s ? s.name : lg.sessionId) + (lg.inProgress ? '<span class="tag">in progress</span>' : '') + '</h2>';
+      h += '<div class="sec lg"><div class="d">' + esc(nice(lg.date)) + '</div><h2>' + esc(lg.sessionName || (s ? s.name : lg.sessionId)) + (lg.inProgress ? '<span class="tag">in progress</span>' : '') + '</h2>';
       (lg.entries || []).forEach(function (en) { h += '<div class="e"><span>' + esc(en.exercise) + '</span><span>' + esc((en.sets || []).join(', ')) + '</span></div>'; });
       if (lg.coachNote) h += '<div class="cn">' + esc(lg.coachNote) + '</div>';
       h += '</div>';
@@ -494,7 +533,7 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
   function render() {
     if (!plan) return;
     if (view === 'today') renderToday();
-    else { $('title').textContent = view === 'prog' ? 'Program' : 'History'; $('subtitle').textContent = view === 'prog' ? '4-day upper / lower split' : 'Sessions and coach notes'; if (view === 'prog') renderProgram(); else renderHistory(); }
+    else { $('title').textContent = view === 'prog' ? 'Program' : 'History'; $('subtitle').textContent = view === 'prog' ? '4-day upper / lower split, under an hour' : 'Sessions and coach notes'; if (view === 'prog') renderProgram(); else renderHistory(); }
   }
   // events
   document.querySelector('.tabs').addEventListener('click', function (e) {
@@ -512,7 +551,8 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
       var kg = document.querySelector('[data-kg="' + ij[0] + ':' + ij[1] + '"]'), rp = document.querySelector('[data-rp="' + ij[0] + ':' + ij[1] + '"]');
       if (kg) x.w = kg.value.trim().replace(',', '.'); if (rp) x.r = rp.value.replace(/\D/g, '');
       x.d = !x.d; x.t = Date.now(); st.u = x.t; putState(s, st); var y = window.scrollY; renderToday(); window.scrollTo(0, y);
-    } else if (b.hasAttribute('data-pick')) { save('workout.v1.pick.' + today(), b.getAttribute('data-pick')); renderToday(); }
+    } else if (b.hasAttribute('data-pick')) { savePick(b.getAttribute('data-pick')); renderToday(); }
+    else if (b.hasAttribute('data-how')) { document.querySelector('[data-v="prog"]').click(); var hs = $('howsec'); if (hs) hs.scrollIntoView(); }
     else if (b.id === 'copy') copyText(summary());
     else if (b.id === 'reset') { if (confirm('Clear all ticks and numbers for this session today?')) { var st2 = { ex: {}, note: '' }; s.exercises.forEach(function (ex, i) { st2.ex[i] = []; for (var j = 0; j < ex.sets; j++) st2.ex[i].push({ d: false, w: '', r: '' }); }); putState(s, st2); renderToday(); } }
   });
@@ -542,7 +582,8 @@ h3,#bars:before,.meal h2{font-weight:700;letter-spacing:-.015em}
       var s0 = plan && sessionById(pickedId()); if (s0 && load(stateKey(s0.id), null)) queueSync(today(), s0.id);
       syncState.err = false; flushSync(); return;
     }
-    var b = e.target.closest('[data-open]'); if (!b) return; save('workout.v1.pick.' + today(), b.getAttribute('data-open')); document.querySelector('[data-v="today"]').click(); });
+    if (e.target.closest('[data-how]')) { var hs = $('howsec'); if (hs) hs.scrollIntoView({ behavior: 'smooth' }); return; }
+    var b = e.target.closest('[data-open]'); if (!b) return; savePick(b.getAttribute('data-open')); document.querySelector('[data-v="today"]').click(); });
   document.addEventListener('visibilitychange', function () { if (!document.hidden) { fetchPlan(false); retrySync(); } });
   window.__w = { summary: function () { return summary(); }, snapshot: snapshot, flush: flushSync };
   renderSync();
