@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T15:35:00+02:00",
+  "updated": "2026-10-17T15:40:00+02:00",
   "wedding": "2026-11-26",
   "notes": [
     "End every working set 1–2 reps short of failure (unless the note says 'to failure').",
@@ -35,10 +35,10 @@
           "short": "Pull-ups",
           "sets": 4,
           "reps": "5–6",
-          "target": "Bodyweight × 6 on all 3 sets, then add weight (dip belt or a dumbbell between the feet)",
+          "target": "Bodyweight: 6 reps on all 4 sets, then add weight (dip belt or a dumbbell between the feet)",
           "rest": "2–3 min",
           "notes": "Full hang at the bottom, chest to the bar.",
-          "lastTime": "Bodyweight × 6, 6, 4"
+          "lastTime": "Bodyweight × 6, 6, 4, 3"
         },
         {
           "name": "Seated DB shoulder press",
@@ -348,11 +348,12 @@
           "sets": [
             "BW×6",
             "BW×6",
-            "BW×4"
+            "BW×4",
+            "BW×3"
           ]
         }
       ],
-      "coachNote": "Session in progress. Bench 65 × 6, 6, 5, 4: stay at 65 kg until all 4 sets hit 6. Pull-ups BW × 6, 6, 4: get 3×6 at bodyweight, then add weight."
+      "coachNote": "Session in progress. Bench 65 × 6, 6, 5, 4: stay at 65 kg until all 4 sets hit 6. Pull-ups BW × 6, 6, 4, 3: stay at bodyweight until all 4 sets hit 6, then add weight."
     }
   ],
   "weekly": {
