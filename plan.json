@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T18:45:00+01:00",
+  "updated": "2026-10-24T19:55:00+01:00",
   "wedding": "2026-11-26",
   "notes": [
     "Effort: big lifts stop 1–2 reps short of failure. Isolation moves stop 0–1 short, and the last set can go to failure (on machines, cables and dumbbells only).",
@@ -12,7 +12,7 @@
     "Cardio: one 4×4 interval session (bike) and 1–2 easy zone-2 sessions of 30–40 min a week, on non-lifting days or at least 3 h away from lifting. Details are in plan v2.",
     "Spain 26–31 Oct: Travel A and Travel B mornings (45 min). Deload 16–22 Nov: same exercises, about half the sets, same weights, 3–4 reps in reserve. Wedding week: one light pump session on Mon 23 Nov, then rest."
   ],
-  "nextSessionId": "day3",
+  "nextSessionId": "day4",
   "sessions": [
     {
       "id": "day1",
@@ -202,10 +202,10 @@
           "short": "DB press",
           "sets": 3,
           "reps": "6–10",
-          "target": "20 kg: get 3 × 10, then 22 kg",
+          "target": "22 kg × 8–10 (or 20 kg × 3×10)",
           "rest": "90 s, then A2",
           "notes": "Back supported, don't flare the ribs, chin neutral. Stop 1–2 reps short of failure.",
-          "lastTime": "18 kg × 8, 18 kg × 10, 20 kg × 8 (17 Oct)",
+          "lastTime": "20×8, 20×10, 24×5",
           "how": "Bench upright with back support. Start with the dumbbells at ear height, press up until the arms are straight, lower back to ear height. Ribs down, no arching.",
           "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
         },
@@ -214,10 +214,10 @@
           "short": "Pulldown",
           "sets": 3,
           "reps": "8–12",
-          "target": "First time: 10 reps with 2 in reserve",
+          "target": "61 kg",
           "rest": "90 s, then A1",
           "notes": "Full stretch at the top, elbows to the hips. Torso stays still and the neck stays relaxed.",
-          "lastTime": "",
+          "lastTime": "59×10, 10, 8",
           "how": "Lean back slightly, pull the bar to the upper chest by driving the elbows down to your sides, then let the arms go fully straight at the top for the lat stretch.",
           "pair": "Superset: do A1, rest 90 s, do A2, rest 90 s, repeat until all sets are done."
         },
@@ -226,10 +226,10 @@
           "short": "Cable fly",
           "sets": 3,
           "reps": "10–15",
-          "target": "First time: 12 reps with 1 in reserve",
+          "target": "5.7 kg, aim 3×12",
           "rest": "75 s, then B2",
           "notes": "Upper chest. Start with the hands low and slightly behind you for the stretch, then sweep up to chin height.",
-          "lastTime": "",
+          "lastTime": "5.7×13, 11, 10",
           "how": "Pulleys at the bottom. Step forward, hands low and slightly behind you, then sweep up and together to chin height with a slight bend in the elbows. This hits the upper chest.",
           "pair": "Superset: do B1, rest 75 s, do B2, rest 75 s, repeat until all sets are done."
         },
@@ -238,10 +238,10 @@
           "short": "Cable row",
           "sets": 3,
           "reps": "10–15",
-          "target": "First time: 12 reps with 1 in reserve",
+          "target": "45 kg, aim 3×10",
           "rest": "75 s, then B1",
           "notes": "Let the shoulder blades travel forward to a stretch, then row to the lower ribs. No shrugging.",
-          "lastTime": "",
+          "lastTime": "45×10, 9, 39×10",
           "how": "Sit tall, let the weight pull the shoulders forward for a stretch, then row the handle to the lower ribs and squeeze the shoulder blades together.",
           "pair": "Superset: do B1, rest 75 s, do B2, rest 75 s, repeat until all sets are done."
         },
@@ -250,10 +250,10 @@
           "short": "Laterals",
           "sets": 3,
           "reps": "12–20",
-          "target": "First time: 15 reps with 1 in reserve. Last set: myo-reps",
+          "target": "next step up from 32",
           "rest": "Go straight into C2, then rest 60 s",
           "notes": "Use a different tool from Day 1 (a machine if the gym has one). Bottom half is where most of the growth stimulus is, so never cut the bottom.",
-          "lastTime": "",
+          "lastTime": "32×15, 15, 15",
           "how": "Lateral-raise machine, or a cable from behind the body if there's no machine. Raise to shoulder height, lower slowly, and never cut the bottom half short. Myo-reps on the last set.",
           "pair": "Pair: do C1, go straight into C2, then rest 60 s."
         },
@@ -262,10 +262,10 @@
           "short": "Rear delts",
           "sets": 3,
           "reps": "12–20",
-          "target": "First time: 15 reps with 1 in reserve",
+          "target": "32 kg",
           "rest": "60 s, then C1",
           "notes": "Arms slightly below shoulder height, pinkies leading, no shrugging. This is the posture work, replacing extra face pulls and Y-raises.",
-          "lastTime": "Face pulls 3.4 kg × 15, 5.7 kg × 18 (17 Oct)",
+          "lastTime": "32×15, 12, 25×17",
           "how": "Face the pec-deck, handles at shoulder height. Sweep the arms back in a wide arc until they're in line with the body, pinkies leading. Slow on the way back.",
           "pair": "Pair: after C1, do C2, rest 60 s, back to C1."
         },
@@ -274,10 +274,10 @@
           "short": "Incline curl",
           "sets": 2,
           "reps": "8–12",
-          "target": "First time: 10 reps with 1 in reserve",
+          "target": "10 kg × 10–12",
           "rest": "Go straight into D2, then rest 60 s",
           "notes": "Bench at about 45°, arms hanging behind you for the long-head stretch. Last set to failure.",
-          "lastTime": "Curl/pushdown superset 14.7 × 14, 19 × 10 (17 Oct)",
+          "lastTime": "12×7, 10×10",
           "how": "Optional, do it only if you have time. Bench at 45°, arms hanging straight down behind your body. Curl up without moving the elbows forward, lower to a full stretch.",
           "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         },
@@ -286,10 +286,10 @@
           "short": "Pushdown",
           "sets": 2,
           "reps": "10–15",
-          "target": "First time: 12 reps with 1 in reserve",
+          "target": "41 kg",
           "rest": "60 s, then D1",
           "notes": "Elbows pinned, full lockout. Last set to failure.",
-          "lastTime": "",
+          "lastTime": "36×15, 41×15",
           "how": "Optional. Rope on a high cable, elbows pinned to your sides. Push down until the arms are locked straight, split the rope at the bottom.",
           "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         }
@@ -686,11 +686,81 @@
         }
       ],
       "coachNote": "First full Lower A after three skips, 18/18 sets on a 33 ms HRV day at RIR 1–2. Hack squat: 97.5 was ~1 RIR, so 87.5 for back-off sets. Next time: hack squat 90 kg × 6–8, RDL 60 kg aiming for 3×8. Took ~75 min, so cut rests to 60–90 s between superset rounds."
+    },
+    {
+      "date": "2026-10-24",
+      "sessionId": "day3",
+      "sessionName": "Day 3 · Upper B · Shoulders + V-taper",
+      "entries": [
+        {
+          "exercise": "Seated DB shoulder press",
+          "sets": [
+            "20×8",
+            "20×10",
+            "24×5"
+          ]
+        },
+        {
+          "exercise": "Lat pulldown",
+          "sets": [
+            "59×10",
+            "59×10",
+            "59×8"
+          ]
+        },
+        {
+          "exercise": "Cable fly",
+          "sets": [
+            "5.7×13",
+            "5.7×11",
+            "5.7×10"
+          ]
+        },
+        {
+          "exercise": "Seated cable row",
+          "sets": [
+            "45×10",
+            "45×9",
+            "39×10"
+          ]
+        },
+        {
+          "exercise": "Lateral raise",
+          "sets": [
+            "32×15",
+            "32×15",
+            "32×15"
+          ]
+        },
+        {
+          "exercise": "Reverse pec-deck",
+          "sets": [
+            "32×15",
+            "32×12",
+            "25×17"
+          ]
+        },
+        {
+          "exercise": "Incline DB curl",
+          "sets": [
+            "12×7",
+            "10×10"
+          ]
+        },
+        {
+          "exercise": "Rope pushdown",
+          "sets": [
+            "36×15",
+            "41×15"
+          ]
+        }
+      ],
+      "coachNote": "All 22 sets in ~60 min, so pace fixed. 10 h sleep. DB press: 24 kg was a big jump (×5), so do 22 kg next or 20 kg for 3×10. Pulldown 59 kg nearly 3×10, so 61 kg next. Laterals 32 kg × 15 on all 3 sets, so go up. Rows dropped off, so stay at 45 kg and aim for 3×10."
     }
   ],
   "weekly": {
     "goal": 4,
-    "done": 1,
+    "done": 2,
     "weekOf": "2026-10-19"
   },
   "planVersion": 2,
