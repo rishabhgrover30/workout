@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T17:28+01:00",
+  "updated": "2026-10-24T18:45:00+01:00",
   "wedding": "2026-11-26",
   "notes": [
     "Effort: big lifts stop 1–2 reps short of failure. Isolation moves stop 0–1 short, and the last set can go to failure (on machines, cables and dumbbells only).",
@@ -12,7 +12,7 @@
     "Cardio: one 4×4 interval session (bike) and 1–2 easy zone-2 sessions of 30–40 min a week, on non-lifting days or at least 3 h away from lifting. Details are in plan v2.",
     "Spain 26–31 Oct: Travel A and Travel B mornings (45 min). Deload 16–22 Nov: same exercises, about half the sets, same weights, 3–4 reps in reserve. Wedding week: one light pump session on Mon 23 Nov, then rest."
   ],
-  "nextSessionId": "day2",
+  "nextSessionId": "day3",
   "sessions": [
     {
       "id": "day1",
@@ -116,10 +116,10 @@
           "short": "Squat",
           "sets": 3,
           "reps": "4–6",
-          "target": "First time: work up to a weight you can do for 6 with 2 in reserve, then log it",
+          "target": "Hack 90 kg (incl. 47.5 sled)",
           "rest": "3 min",
           "notes": "Stop 2 reps short of failure. A low-bar position takes pressure off the neck. Brace, hit depth, eyes forward and down.",
-          "lastTime": "",
+          "lastTime": "Hack 97.5×6, 87.5×7, 6 (incl. sled)",
           "how": "Ramp up in a few sets, then do 3 working sets. Brace like you're about to be punched, sit down between the hips to at least parallel, drive up. Stop with 2 reps left in the tank.",
           "pair": "Straight sets: rest 3 min between sets. Not paired, so you're fresh."
         },
@@ -128,10 +128,10 @@
           "short": "RDL",
           "sets": 3,
           "reps": "6–10",
-          "target": "First time: 8 reps with 2 in reserve",
+          "target": "60 kg, aim 3×8",
           "rest": "2 min",
           "notes": "Hips back to a deep hamstring stretch, bar close to the legs. Straps are fine. Shoulders down, no shrugging, neck neutral.",
-          "lastTime": "",
+          "lastTime": "50×8, 60×8, 7",
           "how": "Soft knees, push the hips back and slide the bar down the thighs until you feel a strong hamstring stretch (usually just below the knee). Stand up by squeezing the glutes.",
           "pair": "Straight sets: rest 2 min."
         },
@@ -140,10 +140,10 @@
           "short": "Seated curl",
           "sets": 3,
           "reps": "10–15",
-          "target": "First time: 12 reps with 1 in reserve",
+          "target": "45 kg",
           "rest": "Go straight into C2, then rest 60 s",
           "notes": "Seated, not lying: it trains the hamstrings at a longer length. Last set to failure, then 3–5 bottom-half partials.",
-          "lastTime": "",
+          "lastTime": "32×15, 39×16, 45×10",
           "how": "Pad just above the heels, thigh pad tight. Curl all the way, lower slowly. On the last set, after failure, add 3–5 short reps in the bottom (stretched) half.",
           "pair": "Superset: do C1, rest 60 s, do C2, rest 60 s, repeat until all sets are done. The pair works because legs and shoulders don't compete."
         },
@@ -152,10 +152,10 @@
           "short": "DB laterals",
           "sets": 3,
           "reps": "12–20",
-          "target": "First time: about 8 kg, 15 reps with 1 in reserve",
+          "target": "8–10 kg",
           "rest": "60 s, then C1",
           "notes": "Seated or leaning slightly forward, stop just above parallel, no shrug. Last set: myo-reps.",
-          "lastTime": "",
+          "lastTime": "8×12, 12, 12",
           "how": "Slight forward lean, raise the dumbbells out to the side to just above shoulder height, lower for 2–3 s. Light enough to do it without swinging.",
           "pair": "Superset: do C1, rest 60 s, do C2, rest 60 s, repeat until all sets are done."
         },
@@ -164,10 +164,10 @@
           "short": "Leg ext",
           "sets": 3,
           "reps": "10–15",
-          "target": "First time: 12 reps with 1 in reserve",
+          "target": "45 kg",
           "rest": "Go straight into D2, then rest 60 s",
           "notes": "Lean back a little to stretch the front of the thigh. Last set to failure.",
-          "lastTime": "",
+          "lastTime": "45×12, 11, 10",
           "how": "Back rest slightly reclined for a quad stretch. Kick up to straight, squeeze 1 s, lower under control.",
           "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         },
@@ -179,7 +179,7 @@
           "target": "First time: 12 reps with 1 in reserve",
           "rest": "60 s, then D1",
           "notes": "2 s pause in the deep stretch at the bottom. Last set: finish with bottom-half partials.",
-          "lastTime": "",
+          "lastTime": "BW×29, 30, 30",
           "how": "Balls of the feet on the edge, drop the heels into a deep stretch and hold 2 s, then rise as high as you can. Don't bounce.",
           "pair": "Superset: do D1, rest 60 s, do D2, rest 60 s, repeat until all sets are done."
         }
@@ -630,12 +630,68 @@
       ],
       "coachNote": "Old plan (v1) Day 1, 22 of 23 sets. Bench 65 × 6, 6, 5, 4 and pull-ups BW × 6, 6, 4, 3 set the starting points for plan v2. DB press reached 20 kg × 8, laterals 3.4 kg × 11–13. Plan v2 starts with Day 2 (Lower A).",
       "sessionName": "Day 1 · Upper Strength (old plan)"
+    },
+    {
+      "date": "2026-10-23",
+      "sessionId": "day2",
+      "sessionName": "Day 2 · Lower A · Squat + hamstrings",
+      "entries": [
+        {
+          "exercise": "Hack squat (incl. 47.5 kg sled)",
+          "sets": [
+            "97.5×6",
+            "87.5×7",
+            "87.5×6"
+          ]
+        },
+        {
+          "exercise": "Romanian deadlift",
+          "sets": [
+            "50×8",
+            "60×8",
+            "60×7"
+          ]
+        },
+        {
+          "exercise": "Seated leg curl",
+          "sets": [
+            "32×15",
+            "39×16",
+            "45×10"
+          ]
+        },
+        {
+          "exercise": "DB lateral raise",
+          "sets": [
+            "8×12",
+            "8×12",
+            "8×12"
+          ]
+        },
+        {
+          "exercise": "Leg extension",
+          "sets": [
+            "45×12",
+            "45×11",
+            "45×10"
+          ]
+        },
+        {
+          "exercise": "Standing calf raise",
+          "sets": [
+            "BW×29",
+            "BW×30",
+            "BW×30"
+          ]
+        }
+      ],
+      "coachNote": "First full Lower A after three skips, 18/18 sets on a 33 ms HRV day at RIR 1–2. Hack squat: 97.5 was ~1 RIR, so 87.5 for back-off sets. Next time: hack squat 90 kg × 6–8, RDL 60 kg aiming for 3×8. Took ~75 min, so cut rests to 60–90 s between superset rounds."
     }
   ],
   "weekly": {
     "goal": 4,
     "done": 1,
-    "weekOf": "2026-10-12"
+    "weekOf": "2026-10-19"
   },
   "planVersion": 2,
   "howItWorks": [
