@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-24T19:55:00+01:00",
+  "updated": "2026-10-27",
   "wedding": "2026-11-26",
   "notes": [
     "Effort: big lifts stop 1–2 reps short of failure. Isolation moves stop 0–1 short, and the last set can go to failure (on machines, cables and dumbbells only).",
@@ -8,7 +8,7 @@
     "Myo-reps (last lateral-raise set): go to failure, rest 5 slow breaths, do 3–5 reps, and repeat three times. Counts as about one extra set.",
     "Readiness: if Oura readiness is under 70 or HRV sits more than about 10% under your normal for 2+ days, still train, but drop the last set of each exercise and don't add weight.",
     "3-day week: do Day 1, Day 2, Day 3, add 1 lateral-raise set to Days 1 and 3, and skip Day 4. Next week starts again at Day 1.",
-    "Neck: the gym plan has no extra neck work, and your physio's programme covers that. Do physio exercises after lifting or at another time, not right before. No shrugs, upright rows or loaded carries. Share this plan with your physio.",
+    "Neck: a short neck-strength block (chin tucks + isometrics) is in the warm-up of Day 1 and Day 3 (and the Spain sessions), twice a week. Build it up slowly; stop if anything hurts. No shrugs, upright rows, loaded carries or heavy conventional deadlifts. RDLs are fine with a neutral neck.",
     "Cardio: one 4×4 interval session (bike) and 1–2 easy zone-2 sessions of 30–40 min a week, on non-lifting days or at least 3 h away from lifting. Details are in plan v2.",
     "Spain 26–31 Oct: Travel A and Travel B mornings (45 min). Deload 16–22 Nov: same exercises, about half the sets, same weights, 3–4 reps in reserve. Wedding week: one light pump session on Mon 23 Nov, then rest."
   ],
@@ -20,9 +20,9 @@
       "focus": "Bench and pull-up strength, upper chest, side delts. About 50 min. Supersets: do A1, rest, A2, rest, repeat.",
       "warmup": [
         "2 min easy bike or arm swings",
-        "1 light set of cable rear-delt flyes or face pulls ×15 (skip if physio already did scapular work today)",
+        "1 light set of cable rear-delt flyes or face pulls ×15",
         "Bench ramp: empty bar ×10, 45 kg ×5, 55 kg ×3, 60 kg ×1",
-        "Neck: nothing extra here. Do your physio exercises after the session or at another time of day"
+        "Neck strength (3 min): lying chin tucks 2×10 with a 5 s hold, then neck isometrics, hand against the forehead, back of the head and each side at 50% effort, 2×10 s each. Slow and pain-free, never to failure"
       ],
       "exercises": [
         {
@@ -194,7 +194,7 @@
       "warmup": [
         "2 min easy bike or arm swings",
         "1 light set each of DB press ×12 and pulldown ×12",
-        "Neck: nothing extra here. Physio exercises go after the session or at another time of day"
+        "Neck strength (3 min): lying chin tucks 2×10 with a 5 s hold, then neck isometrics, hand against the forehead, back of the head and each side at 50% effort, 2×10 s each. Slow and pain-free, never to failure"
       ],
       "exercises": [
         {
@@ -388,7 +388,8 @@
       "focus": "Hotel or commercial gym, morning. Push, pull, legs and delts in about 41 min. If the gym has dumbbells only or machines only, use the swaps in the notes.",
       "warmup": [
         "3 min brisk walk, bike or stairs",
-        "1 light set of the first two exercises ×12"
+        "1 light set of the first two exercises ×12",
+        "Neck strength (3 min): chin tucks 2×10 with a 5 s hold, then isometrics against your hand (front, back, each side) at 50% effort, 2×10 s each"
       ],
       "exercises": [
         {
@@ -473,7 +474,8 @@
       "focus": "Hotel or commercial gym, morning. Shoulders, lats, hamstrings, upper chest, about 45 min. If you only get 30 min, do blocks A and C.",
       "warmup": [
         "3 min brisk walk, bike or stairs",
-        "1 light set of DB press ×12"
+        "1 light set of DB press ×12",
+        "Neck strength (3 min): chin tucks 2×10 with a 5 s hold, then isometrics against your hand (front, back, each side) at 50% effort, 2×10 s each"
       ],
       "exercises": [
         {
@@ -794,8 +796,8 @@
       "d": "Once a week, 4×4 on a bike: 8 min easy, then 4 × 4 min hard (could just about hold a conversation in single words) with 3 min easy between. Plus 1–2 zone-2 sessions of 30–40 min: brisk incline walk or easy bike where you can still speak in full sentences and breathe through your nose. Keep the 4×4 away from lifting and not the day before a leg day."
     },
     {
-      "t": "Neck and physio",
-      "d": "There's no extra neck work in the gym, because your physio covers it. Do physio after lifting or at another time of day, not right before. No shrugs, upright rows, loaded carries or deadlifts. Show your physio this plan; their advice wins."
+      "t": "Neck",
+      "d": "Your neck is sensitive and the cervical muscles are weak, so twice a week (Day 1 and Day 3 warm-ups) you do a 3-minute strength block: lying chin tucks 2×10 with a 5 s hold, then neck isometrics (hand against forehead, back of head and each side) at 50% effort, 2×10 s each. Increase the effort slowly over weeks, never train it to failure, and stop if it causes pain. In the gym: no shrugs, upright rows, loaded carries or heavy conventional deadlifts. RDLs are fine with a neutral neck. Keep shoulders down and the neck relaxed on laterals, rows and pulldowns. If pain persists, see a physio."
     },
     {
       "t": "Oura readiness",
