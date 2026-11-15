@@ -1,0 +1,29 @@
+Pre-wedding home plan exercise images
+=====================================
+
+All figures are from Open Exercise Illustrations, a CC0 (public domain)
+set of start/end position drawings:
+
+  https://github.com/hitmanrepo/open-exercise-illustrations
+  License: CC0 1.0 Universal — https://creativecommons.org/publicdomain/zero/1.0/
+
+Each source frame was downloaded, visually checked to confirm it shows
+the named exercise, then cropped and composited locally into the JPEGs
+used on the page. No images were generated for this page.
+
+  arm-circles.jpg         arm-circles start + end
+  jumping-jacks.jpg       jumping-jacks start + end
+  push-up.jpg             push-up start + end
+  pike-push-up.jpg        pike-push-up start + end
+  chair-dip.jpg           bench-dip start + end  (same movement as a chair dip)
+  ytw-raises.jpg          prone-y-raise, prone-t-raise, prone-w-raise (end / lifted)
+  plank.jpg               plank hold
+  squat.jpg               bodyweight-squat start + end
+  reverse-lunge.jpg       reverse-lunge start + end
+  glute-bridge.jpg        glute-bridge start + end
+  wall-sit.jpg            wall-sit hold
+  dead-bug.jpg            dead-bug start + end
+  march.jpg               marching-in-place
+  hip-mobility.jpg        kneeling-hip-flexor-stretch hold
+  chest-mobility.jpg      doorway-chest-stretch hold
+  shoulder-mobility.jpg   cross-body-shoulder-stretch hold

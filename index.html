@@ -258,6 +258,23 @@ details.how p.pr{color:var(--status);font-weight:500}
 .why b{color:var(--text);font-weight:700}
 .why a{display:block;color:var(--text2);text-decoration:none;padding:7px 0;border-top:.5px solid var(--line)}
 .why a:after{content:" ↗";color:var(--muted)}
+
+/* Pre-wedding home plan (16–25 Nov) */
+.homebanner{display:block;width:100%;margin:6px 0 10px;padding:16px 16px 14px;border-radius:16px;background:rgba(79,208,162,.12);border:.5px solid rgba(79,208,162,.35);text-align:left;color:var(--text)}
+.homebanner b{display:block;font-size:16px;font-weight:700;margin-bottom:2px}
+.homebanner span{display:block;font-size:14px;color:var(--text2);line-height:1.4}
+.homebanner em{display:block;margin-top:8px;font-style:normal;font-size:14px;font-weight:600;color:var(--status)}
+.hnotes{display:flex;flex-direction:column;gap:8px;margin:4px 0 6px}
+.hnotes p{margin:0;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:.5px solid var(--line2);font-size:14px;line-height:1.45;color:var(--text2)}
+.hday .kind{font-size:16px;color:var(--text2);margin:2px 0 4px}
+.hday .when{font-size:14px;color:var(--muted);margin:0 0 8px}
+.hex{padding:16px 0;border-top:.5px solid var(--line)}
+.hex .exhd{margin-bottom:8px}
+.hex img{display:block;width:100%;height:auto;border-radius:14px;background:#111214;border:.5px solid var(--line)}
+.hex .cue{margin:8px 0 0;font-size:14px;line-height:1.45;color:var(--text2)}
+.hcredit{margin-top:8px}
+#v-home{padding-bottom:48px}
+#v-home .sr:after{content:none}
 </style>
 </head>
 <body>
@@ -269,18 +286,20 @@ details.how p.pr{color:var(--status);font-weight:500}
 <main>
   <section class="view on" id="v-today"></section>
   <section class="view" id="v-prog"></section>
+  <section class="view" id="v-home"></section>
   <section class="view" id="v-hist"></section>
 </main>
 <nav class="tabs">
   <button class="on" data-v="today"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M3 12h18M6 8v8M18 8v8M8.5 10v4M15.5 10v4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Today</button>
   <button data-v="prog"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 7h14M5 12h14M5 17h9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Program</button>
+  <button data-v="home"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 11.5 12 5l7 6.5V20a1 1 0 0 1-1 1h-4.5v-6h-3v6H6a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>Home</button>
   <button data-v="hist"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M5 19V11M10 19V6M15 19v-5M20 19V9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>History</button>
 </nav>
 <div class="toast" id="toast"></div>
 <script>
 (function () {
   'use strict';
-  var plan = null, view = 'today';
+  var plan = null, view = 'today', homePick = null;
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -441,13 +460,140 @@ details.how p.pr{color:var(--status);font-weight:500}
   function fmtSet(x) { var w = String(x.w || '').trim(), r = String(x.r || '').trim(); if (r) return (w || 'BW') + '×' + r; if (w) return w + (x.d ? '×?' : ''); return x.d ? '✓' : ''; }
   function normVal(v) { return String(v || '').trim().replace(/\s*[xX*]\s*/g, '×').replace(/\s*×\s*/g, '×'); }
 
+
+  // ----- Pre-wedding home plan (16–25 Nov): bodyweight, 15–20 min, indoors -----
+  var HOME_FROM = '2026-11-16', HOME_TO = '2026-11-25';
+  function inHomeWindow(d) { d = d || today(); return d >= HOME_FROM && d <= HOME_TO; }
+  var HOME_WU = [
+    { name: 'Arm circles', reps: '', img: 'img/home/arm-circles.jpg', alt: 'Arm circles: arms out to the sides, then overhead', cue: 'Slow, controlled circles in both directions. Keep the neck relaxed.' },
+    { name: 'Jumping jacks', reps: '', img: 'img/home/jumping-jacks.jpg', alt: 'Jumping jacks: feet together, then jump the feet out and the arms up', cue: 'Soft landings. Step the feet out instead of jumping if you want it easier.' }
+  ];
+  var HOME_A = {
+    kind: 'Upper / V-taper',
+    meta: '3 rounds · 45 s rest between rounds · 15–20 min',
+    warmup: HOME_WU,
+    exercises: [
+      { name: 'Push-ups', reps: '10–15', img: 'img/home/push-up.jpg', alt: 'Push-up: high plank, then lower the chest towards the floor', cue: 'Straight line from head to heels. Drop to your knees if you need to.' },
+      { name: 'Pike push-ups', reps: '6–10', img: 'img/home/pike-push-up.jpg', alt: 'Pike push-up: hips high, then bend the elbows and lower the head', cue: 'Hips stay high. Bend the elbows and aim the head towards the floor, without craning the neck.' },
+      { name: 'Chair dips', reps: '10–12', img: 'img/home/chair-dip.jpg', alt: 'Chair dip: hands on a bench or chair, then lower until the elbows are about 90 degrees', cue: 'Hands on a sturdy chair or sofa edge, just behind your hips. Keep the shoulders down.' },
+      { name: 'Prone Y-T-W raises', reps: '8 each', img: 'img/home/ytw-raises.jpg', alt: 'Prone Y, T and W raises: lying face down, lift the arms into a Y, then a T, then a W', cue: 'Forehead stays down — lift the arms only, don’t crane the neck. Eight reps in each shape.' },
+      { name: 'Plank', reps: '30–40 s', img: 'img/home/plank.jpg', alt: 'Forearm plank, body in a straight line', cue: 'Squeeze the glutes. Don’t let the hips sag or pike up.' }
+    ]
+  };
+  var HOME_B = {
+    kind: 'Legs + core',
+    meta: '3 rounds · 45 s rest between rounds · 15–20 min',
+    warmup: HOME_WU,
+    exercises: [
+      { name: 'Bodyweight squats', reps: '15–20', img: 'img/home/squat.jpg', alt: 'Bodyweight squat: stand tall, then sit back until the thighs are about parallel', cue: 'Sit back, chest up, heels stay down.' },
+      { name: 'Reverse lunges', reps: '10 / leg', img: 'img/home/reverse-lunge.jpg', alt: 'Reverse lunge: stand tall, then step one foot back until both knees are about 90 degrees', cue: 'Step back, both knees to about 90°, then push through the front heel.' },
+      { name: 'Glute bridges', reps: '15, pause at top', img: 'img/home/glute-bridge.jpg', alt: 'Glute bridge: lie on your back with knees bent, then lift the hips and pause', cue: 'Pause at the top and squeeze. Don’t arch the lower back.' },
+      { name: 'Wall sit', reps: '30–45 s', img: 'img/home/wall-sit.jpg', alt: 'Wall sit: back flat against a wall, thighs parallel to the floor', cue: 'Back flat on the wall, thighs parallel if you can. Come up a little if it gets sharp.' },
+      { name: 'Dead bugs', reps: '10 / side', img: 'img/home/dead-bug.jpg', alt: 'Dead bug: lying on your back with arms and knees up, then reach opposite arm and leg', cue: 'Opposite arm and leg. Keep your lower back pressed to the floor.' }
+    ]
+  };
+  var HOME_EASY = {
+    kind: 'Easy walk + mobility',
+    meta: 'About 15 minutes · easy effort',
+    warmup: [],
+    exercises: [
+      { name: 'Indoor brisk walk or march on the spot', reps: '15 min', img: 'img/home/march.jpg', alt: 'Marching in place, knee lifted', cue: 'Brisk but easy — you should still be able to talk. Stay indoors.' },
+      { name: 'Hip mobility', reps: '45–60 s / side', img: 'img/home/hip-mobility.jpg', alt: 'Kneeling hip-flexor stretch, back knee on the floor, hands on the front knee', cue: 'Kneeling lunge. Gently tuck the pelvis and shift forward until you feel it in the back-leg hip. Both sides.' },
+      { name: 'Chest mobility', reps: '45–60 s / side', img: 'img/home/chest-mobility.jpg', alt: 'Chest stretch: one hand on a post or doorframe, body turned slightly away', cue: 'Hand or forearm on a doorframe or wall corner at shoulder height. Gently turn the chest away. Both sides.' },
+      { name: 'Shoulder mobility', reps: '45–60 s / side', img: 'img/home/shoulder-mobility.jpg', alt: 'Cross-body shoulder stretch, one arm drawn across the chest', cue: 'Draw the arm across the chest for an easy stretch. Don’t pull on the elbow joint. Both sides.' }
+    ]
+  };
+  var HOME_PUMP = {
+    kind: 'Light pump',
+    meta: '2 easy rounds · look and feel fresh for the 26th',
+    warmup: [],
+    exercises: [
+      { name: 'Push-ups', reps: '10', img: 'img/home/push-up.jpg', alt: 'Push-up: high plank, then lower the chest towards the floor', cue: 'Easy effort. Straight line from head to heels.' },
+      { name: 'Pike push-ups', reps: '8', img: 'img/home/pike-push-up.jpg', alt: 'Pike push-up: hips high, then bend the elbows and lower the head', cue: 'Hips high, easy reps, don’t crane the neck.' },
+      { name: 'Bodyweight squats', reps: '15', img: 'img/home/squat.jpg', alt: 'Bodyweight squat: stand tall, then sit back until the thighs are about parallel', cue: 'Smooth and easy. Heels stay down.' },
+      { name: 'Plank', reps: '30 s', img: 'img/home/plank.jpg', alt: 'Forearm plank, body in a straight line', cue: 'A steady 30 seconds. Don’t let the hips sag.' }
+    ]
+  };
+  var HOME_DAYS = [
+    { date: '2026-11-16', block: HOME_A },
+    { date: '2026-11-17', block: HOME_B },
+    { date: '2026-11-18', block: HOME_A },
+    { date: '2026-11-19', block: HOME_B },
+    { date: '2026-11-20', block: HOME_EASY },
+    { date: '2026-11-21', block: HOME_A },
+    { date: '2026-11-22', block: HOME_B },
+    { date: '2026-11-23', block: HOME_A },
+    { date: '2026-11-24', block: HOME_B },
+    { date: '2026-11-25', block: HOME_PUMP }
+  ];
+  function homeDayByDate(d) { return HOME_DAYS.filter(function (x) { return x.date === d; })[0] || null; }
+  function pickedHome() {
+    if (homePick && homeDayByDate(homePick)) return homePick;
+    var t = today();
+    if (t < HOME_FROM) return HOME_FROM;
+    if (t > HOME_TO) return HOME_TO;
+    return t;
+  }
+  function pillLabel(d) { return pdate(d).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric' }); }
+  function renderEx(ex) {
+    var reps = ex.reps ? '<span class="sr">' + esc(ex.reps) + '</span>' : '';
+    return '<div class="hex"><div class="exhd"><h2>' + esc(ex.name) + '</h2>' + reps + '</div>' +
+      '<img src="' + esc(ex.img) + '" alt="' + esc(ex.alt) + '" width="1200" height="800" loading="lazy">' +
+      (ex.cue ? '<p class="cue">' + esc(ex.cue) + '</p>' : '') + '</div>';
+  }
+  function renderHome() {
+    var id = pickedHome(), day = homeDayByDate(id), b = day.block, t = today();
+    $('title').textContent = 'Home plan';
+    $('subtitle').textContent = '16–25 Nov · 15–20 min indoors';
+    var h = '<div class="sec" style="padding-bottom:8px"><h3>Pre-wedding home plan (16–25 Nov)</h3>';
+    h += '<div class="picker">';
+    HOME_DAYS.forEach(function (x) {
+      h += '<button class="pill' + (x.date === id ? ' on' : '') + '" data-home-pick="' + x.date + '">' +
+        esc(pillLabel(x.date)) + (x.date === t ? '<span class="dot"></span>' : '') + '</button>';
+    });
+    h += '</div></div>';
+    h += '<div class="sec hnotes"><p>Moderate effort — stop 2 reps before failure.</p>' +
+      '<p>Short on time? Do 2 rounds. It still counts.</p>' +
+      '<p>Indoors only while the air is this bad.</p></div>';
+    h += '<div class="sec hday">';
+    h += '<div class="hdayhd"><h2>' + esc(nice(id)) + (id === t ? '<span class="tag">today</span>' : '') + '</h2></div>';
+    h += '<div class="kind">' + esc(b.kind) + '</div>';
+    h += '<div class="when">' + esc(b.meta) + '</div>';
+    if (b.warmup && b.warmup.length) {
+      h += '<div class="hwu"><h3>Warm-up · 2 min</h3>';
+      b.warmup.forEach(function (ex) { h += renderEx(ex); });
+      h += '</div>';
+    }
+    if (b.warmup && b.warmup.length) h += '<h3>Rounds</h3>';
+    b.exercises.forEach(function (ex) { h += renderEx(ex); });
+    h += '</div>';
+    h += '<div class="hint hcredit">Figures from Open Exercise Illustrations (CC0). Reply “done” after each session.</div>';
+    $('v-home').innerHTML = h;
+    var on = document.querySelector('#v-home .pill.on');
+    if (on && on.scrollIntoView) on.scrollIntoView({ inline: 'center', block: 'nearest' });
+  }
+  function homeBannerHtml() {
+    if (!inHomeWindow()) return '';
+    var day = homeDayByDate(today());
+    if (!day) return '';
+    return '<button class="homebanner" type="button" data-gohome="1"><b>Today’s home session</b><span>' +
+      esc(day.block.kind) + ' · ' + esc(day.block.meta) + '</span><em>Open the plan with pictures ›</em></button>';
+  }
+  function showView(name) {
+    view = name;
+    Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.classList.toggle('on', x.getAttribute('data-v') === name); });
+    Array.prototype.forEach.call(document.querySelectorAll('.view'), function (v) { v.classList.toggle('on', v.id === 'v-' + name); });
+    render();
+    window.scrollTo(0, 0);
+  }
+
   function renderToday() {
     var s = sessionById(pickedId()); if (!s) { $('v-today').innerHTML = '<div class="err">No session found.</div>'; return; }
     var st = getState(s), total = 0, done = 0;
     s.exercises.forEach(function (ex, i) { st.ex[i].forEach(function (x) { total++; if (x.d) done++; }); });
     $('title').textContent = s.name.replace(/^(Day \d+|Travel [A-Z])\s*·\s*/, '');
     $('subtitle').textContent = sessLabel(s.name) + (s.id === plan.nextSessionId ? ' · next up' : '') + ' · ' + nice(today());
-    var h = '<div class="sec"><div class="picker">' + plan.sessions.map(function (x) {
+    var h = homeBannerHtml() + '<div class="sec"><div class="picker">' + plan.sessions.map(function (x) {
       return '<button class="pill' + (x.id === s.id ? ' on' : '') + '" data-pick="' + esc(x.id) + '">' + esc(sessLabel(x.name)) + (x.id === plan.nextSessionId ? '<span class="dot"></span>' : '') + '</button>';
     }).join('') + '</div>';
     h += '<div class="sub" style="margin-top:10px">' + esc(s.purpose || s.focus || '') + '</div>';
@@ -493,7 +639,7 @@ details.how p.pr{color:var(--status);font-weight:500}
     var sp = document.querySelector('#v-today .prog span'); if (sp) sp.textContent = done + ' / ' + total + ' sets';
   }
   function renderProgram() {
-    var h = plan.howItWorks ? '<div class="sec" style="padding-bottom:0"><button class="howlink" data-how="1">How this plan works ›</button></div>' : '';
+    var h = (inHomeWindow() ? '<div class="sec" style="padding-bottom:0"><button class="howlink" data-gohome="1">Pre-wedding home plan (16–25 Nov) ›</button></div>' : '') + (plan.howItWorks ? '<div class="sec" style="padding-bottom:0"><button class="howlink" data-how="1">How this plan works ›</button></div>' : '');
     plan.sessions.forEach(function (s) {
       h += '<div class="sec card-s"><h2>' + esc(s.name) + (s.id === plan.nextSessionId ? '<span class="tag">next</span>' : '') + '</h2><div class="f">' + esc(s.time ? '⏱ ' + s.time : (s.focus || '')) + '</div>' + (s.purpose ? '<div class="pp">' + esc(s.purpose) + '</div>' : '');
       s.exercises.forEach(function (ex) { h += '<div class="row"><span>' + esc(ex.name) + '</span><span>' + esc(ex.sets) + ' × ' + esc(ex.reps) + '</span></div>'; });
@@ -531,16 +677,14 @@ details.how p.pr{color:var(--status);font-weight:500}
     $('v-hist').innerHTML = h;
   }
   function render() {
+    if (view === 'home') { renderHome(); return; }
     if (!plan) return;
     if (view === 'today') renderToday();
     else { $('title').textContent = view === 'prog' ? 'Program' : 'History'; $('subtitle').textContent = view === 'prog' ? '4-day upper / lower split, under an hour' : 'Sessions and coach notes'; if (view === 'prog') renderProgram(); else renderHistory(); }
   }
   // events
   document.querySelector('.tabs').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-v]'); if (!b) return; view = b.getAttribute('data-v');
-    Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.classList.toggle('on', x === b); });
-    Array.prototype.forEach.call(document.querySelectorAll('.view'), function (v) { v.classList.toggle('on', v.id === 'v-' + view); });
-    render(); window.scrollTo(0, 0);
+    var b = e.target.closest('[data-v]'); if (!b) return; showView(b.getAttribute('data-v'));
   });
   $('refresh').addEventListener('click', function () { fetchPlan(true); });
   $('v-today').addEventListener('click', function (e) {
@@ -554,7 +698,25 @@ details.how p.pr{color:var(--status);font-weight:500}
     } else if (b.hasAttribute('data-pick')) { savePick(b.getAttribute('data-pick')); renderToday(); }
     else if (b.hasAttribute('data-how')) { document.querySelector('[data-v="prog"]').click(); var hs = $('howsec'); if (hs) hs.scrollIntoView(); }
     else if (b.id === 'copy') copyText(summary());
+    else if (b.hasAttribute('data-gohome')) { setHomeDay(today()); }
     else if (b.id === 'reset') { if (confirm('Clear all ticks and numbers for this session today?')) { var st2 = { ex: {}, note: '' }; s.exercises.forEach(function (ex, i) { st2.ex[i] = []; for (var j = 0; j < ex.sets; j++) st2.ex[i].push({ d: false, w: '', r: '' }); }); putState(s, st2); renderToday(); } }
+  });
+  function setHomeDay(d) {
+    homePick = d;
+    try { history.replaceState(null, '', (location.pathname || '/') + (location.search || '') + '#home/' + d); } catch (e) {}
+    if (view !== 'home') showView('home');
+    else { renderHome(); window.scrollTo(0, 0); }
+  }
+  $('v-home').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-home-pick]'); if (!b) return;
+    setHomeDay(b.getAttribute('data-home-pick'));
+  });
+  window.addEventListener('hashchange', function () {
+    var m = (location.hash || '').match(/^#home(?:\/(\d{4}-\d{2}-\d{2}))?/);
+    if (!m) return;
+    if (m[1] && homeDayByDate(m[1])) homePick = m[1];
+    if (view !== 'home') showView('home');
+    else { renderHome(); window.scrollTo(0, 0); }
   });
   $('v-today').addEventListener('change', function (e) {
     var t = e.target, s = sessionById(pickedId()), st = getState(s);
@@ -582,10 +744,19 @@ details.how p.pr{color:var(--status);font-weight:500}
       var s0 = plan && sessionById(pickedId()); if (s0 && load(stateKey(s0.id), null)) queueSync(today(), s0.id);
       syncState.err = false; flushSync(); return;
     }
+    if (e.target.closest('[data-gohome]')) { setHomeDay(today()); return; }
     if (e.target.closest('[data-how]')) { var hs = $('howsec'); if (hs) hs.scrollIntoView({ behavior: 'smooth' }); return; }
     var b = e.target.closest('[data-open]'); if (!b) return; savePick(b.getAttribute('data-open')); document.querySelector('[data-v="today"]').click(); });
   document.addEventListener('visibilitychange', function () { if (!document.hidden) { fetchPlan(false); retrySync(); } });
   window.__w = { summary: function () { return summary(); }, snapshot: snapshot, flush: flushSync };
+  (function initHomeHash() {
+    var m = (location.hash || '').match(/^#home(?:\/(\d{4}-\d{2}-\d{2}))?/);
+    if (!m) return;
+    if (m[1] && homeDayByDate(m[1])) homePick = m[1];
+    view = 'home';
+    Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.classList.toggle('on', x.getAttribute('data-v') === 'home'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.view'), function (v) { v.classList.toggle('on', v.id === 'v-home'); });
+  })();
   renderSync();
   fetchPlan(false).then(function () { if (syncUrl() && load(SK.q, []).length) setTimeout(flushSync, 1000); }); // retry anything queued last time
 })();

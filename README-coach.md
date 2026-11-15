@@ -2,6 +2,8 @@
 
 Live: https://rishabhgrover30.github.io/workout/ · Repo: rishabhgrover30/workout (Pages: main, root)
 
+A **Home** tab holds the pre-wedding indoor bodyweight plan (16–25 Nov) with pictures. It lives in `index.html` plus `img/home/` (not in `plan.json`). Deep link: https://rishabhgrover30.github.io/workout/#home or `#home/2026-11-16`. During those dates, Today shows a banner to today’s session.
+
 The app reads `plan.json` on every open, on "Refresh plan", and whenever it comes back to the foreground. It adds `?t=Date.now()` and `cache: no-store`, so a push shows up as soon as Pages redeploys (about 30–60 s). Nothing else needs to change. `index.html` is generic.
 
 ## Quick update (after each session)
